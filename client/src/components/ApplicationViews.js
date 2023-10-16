@@ -1,11 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import Bikes from "./bikes/Bikes";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import WorkOrderList from "./workorders/WorkOrderList";
-import CreateWorkOrder from "./workorders/CreateWorkOrder";
-import UserProfileList from "./userprofiles/UserProfileList";
+import { ItemList } from "./items/ItemList";
+
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -20,10 +18,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route
-          // path="bikes"
+          path="items"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              {/* <Bikes /> */}
+              <ItemList />
             </AuthorizedRoute>
           }
         />
