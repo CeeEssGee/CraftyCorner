@@ -20,4 +20,12 @@ public class UserProfile
     public string IdentityUserId { get; set; }
 
     public IdentityUser IdentityUser { get; set; }
+
+    public string FullName
+    {
+        get
+        {
+            return $"{FirstName} {LastName}";
+        }
+    }
 }
