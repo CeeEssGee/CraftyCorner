@@ -17,18 +17,19 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetItems()
     {
         return Ok(_dbContext.Items
         .Include(i => i.UserProfile)
         .Include(i => i.Picture)
         .Include(i => i.Category)
-        .ToList());
+        .ToList()
+        );
     }
 
     [HttpGet("{id}")]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetItemById(int id)
     {
         Item item = _dbContext

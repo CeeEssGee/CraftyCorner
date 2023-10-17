@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Card, CardBody, CardFooter, CardSubtitle, CardTitle } from "reactstrap";
+import { getItemById } from "../../managers/itemManager";
 
 
 export default function ItemDetails({ detailsItemId }) {
     const [item, setItem] = useState(null);
 
-    const getItemById = (id) => {
+    const getItemDetails = (id) => {
         getItemById(id).then(setItem);
     };
 
     useEffect(() => {
         if (detailsItemId) {
-            getItemById(detailsItemId)
+            getItemDetails(detailsItemId)
         }
-
     }, [detailsItemId])
 
     if (!item) {
@@ -31,7 +31,15 @@ export default function ItemDetails({ detailsItemId }) {
             <Card color="dark" inverse>
                 <CardBody>
                     <CardTitle tag="h4">{item.manufacturer} {item.name}</CardTitle>
+                    <p>Owner: {item.userProfile.fullName}</p>
+                    <p>{item.category.name}</p>
+                    <img src={item.picture.url} alt={item.name} />
+                    <p>{item.notes}</p>
                 </CardBody>
+                <CardFooter>
+                    Comments:
+
+                </CardFooter>
             </Card>
         </>
     )
