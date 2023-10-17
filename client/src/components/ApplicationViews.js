@@ -4,6 +4,8 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 // import ItemList from "./items/ItemList";
 import Items from "./items/Items";
+import { CategoryList } from "./categories/CategoryList";
+// import { CategoryCreate } from "./categories/CategoryCreate";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -26,12 +28,12 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route path="workorders">
+        <Route path="categories">
           <Route
             index
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                {/* <WorkOrderList /> */}
+                <CategoryList loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
@@ -39,7 +41,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path="create"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                {/* <CreateWorkOrder /> */}
+                {/* <CategoryCreate /> */}
               </AuthorizedRoute>
             }
           />

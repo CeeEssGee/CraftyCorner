@@ -36,6 +36,13 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                 </NavItem>
 
 
+                                <NavItem onClick={() => setOpen(false)}>
+                                    <NavLink tag={RRNavLink} to="/categories">
+                                        Categories
+                                    </NavLink>
+                                </NavItem>
+
+
                             </Nav>
                         </Collapse>
 
