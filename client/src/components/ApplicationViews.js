@@ -2,7 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { ItemList } from "./items/ItemList";
+// import ItemList from "./items/ItemList";
+import Items from "./items/Items";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -21,7 +22,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="items"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <ItemList />
+              <Items />
             </AuthorizedRoute>
           }
         />

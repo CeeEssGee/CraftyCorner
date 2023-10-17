@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { getItems } from "../../managers/itemManager";
-import { Table } from "reactstrap";
 import ItemCard from "./ItemCard";
 
-export const ItemList = ({ loggedInUser, setDetailsItemId }) => {
+export default function ItemList({ setDetailsItemId }) {
     const [items, setItems] = useState([]);
 
-    useEffect(() => {
+    const getAllItems = () => {
         getItems().then(setItems);
+    };
+
+    useEffect(() => {
+        getAllItems();
     }, []);
 
     return (
