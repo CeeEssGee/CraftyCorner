@@ -24,7 +24,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="items"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Items />
+              <Items loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
