@@ -11,7 +11,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
     const [itemCategory, setItemCategory] = useState([]);
     const [error, setError] = useState(false);
     const [categories, setCategories] = useState([]);
-    const [itemPictureId, setItemPictureId] = useState([]);
+    const [itemPictureUrl, setItemPictureUrl] = useState("");
 
     useEffect(() => {
         getCategories().then(setCategories)
@@ -24,7 +24,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
             notes: itemNotes,
             isActive: itemIsActive,
             categoryId: itemCategory,
-            pictureId: itemPictureId,
+            pictureUrl: itemPictureUrl,
             userProfileId: loggedInUser.id
         }
 
@@ -102,7 +102,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                             type="text"
                             name="pictureId"
                             onChange={(e) => {
-                                setItemPictureId(parseInt(e.target.value));
+                                setItemPictureUrl(e.target.value);
                             }}
                         ></Input>
                     </FormGroup>

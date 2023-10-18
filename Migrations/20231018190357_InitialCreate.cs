@@ -80,19 +80,6 @@ namespace CraftyCorner.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pictures",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Url = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pictures", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -231,7 +218,7 @@ namespace CraftyCorner.Migrations
                     Notes = table.Column<string>(type: "text", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
-                    PictureId = table.Column<int>(type: "integer", nullable: false),
+                    PictureUrl = table.Column<string>(type: "text", nullable: false),
                     UserProfileId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -241,12 +228,6 @@ namespace CraftyCorner.Migrations
                         name: "FK_Items_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Items_Pictures_PictureId",
-                        column: x => x.PictureId,
-                        principalTable: "Pictures",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -262,8 +243,8 @@ namespace CraftyCorner.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "89f75b7b-1beb-44b4-9c61-eb0d652718de", "Admin", "admin" },
-                    { "f2498ab4-e4b6-4e61-92c0-9568e96a8145", "a211e4bf-fd02-4793-b30e-93247bdc1860", "Courtney", "courtney" }
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "27a4d34d-eec2-4372-9777-27f1793e8b85", "Admin", "admin" },
+                    { "f2498ab4-e4b6-4e61-92c0-9568e96a8145", "d44b832a-ac77-4b91-8c2d-2ed4dd0541f3", "Courtney", "courtney" }
                 });
 
             migrationBuilder.InsertData(
@@ -271,11 +252,11 @@ namespace CraftyCorner.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c", 0, "0fa0f32c-c229-4877-8fe2-581812a8fbd6", "gail@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEFhJ9kw11wpvqa55dpL9oTrnriCc0uyoPLNapKRr5qDABpvb8EcPJ28sLjH72ogbXA==", null, false, "c8cc3dea-7778-4dfb-8fae-002af9df0438", false, "Gail" },
-                    { "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5", 0, "2891b839-24c0-45a5-b0a0-7b9701700575", "shiree@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEPyKTvcIJmpIOsv3mJ2muNoa0eWIY+Dn6u9MpvUMyGnALV8Oe4B8opvIr0wt1e8KNw==", null, false, "6b855bfd-acb7-4760-9038-c6ff6d81c319", false, "Shiree" },
-                    { "d9b5145a-739c-42d3-9e94-d2d439063d7e", 0, "a92a656d-845a-4d3e-98bb-5cbeb4138064", "joy@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAENWYXNtDRxzuiC+dNJTuzKLKszeeIPk3YqBiv/JWhiWEhzGL61Cj/SGoJaY6AuFDzQ==", null, false, "da153aa6-d779-4dfd-9429-7c41f01619e8", false, "Joy" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "983fc01a-2cbb-4b5c-97fb-fb406fe3f85e", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEP/wmB2uI92juO7XAjZfKWGotnEL5q7uSMtbIqp6zzDgQqrTfvjutAknhYEAdDUmTg==", null, false, "1078d733-8869-4641-b244-9d2a44d99208", false, "Administrator" },
-                    { "f2498ab4-e4b6-4e61-92c0-9568e96a8145", 0, "7e3e8a23-13d9-46e9-8cf0-e435c8bce704", "courtney@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEFgibnoikc203wsBGCUYuO7qiUeZw6BiPovY36mQCUVPBUhPLUME7y+eH5MWrVpnzw==", null, false, "9992cdfc-0b90-4d4d-8582-0e011aeeeb79", false, "Courtney" }
+                    { "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c", 0, "39d593f2-8176-45b8-8753-870c4da69b19", "gail@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEBsd1X8qAgohrMg3Xn99wezMmR2hGrt0dkhQhR8JUioDJTqLzFPDrysnixXsm9UPlw==", null, false, "49d9a574-67cc-4bb6-aca7-debb5cff62ea", false, "Gail" },
+                    { "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5", 0, "95d25475-20b0-4e51-893b-64699c165400", "shiree@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEE7AYl1jFUzrBc0FFry2cTP/HoHTCWIeYU84qyvPpQ+Jw3ynpeppfV6TBKTd4q8t4w==", null, false, "72c4119e-0985-4c17-b0cc-a4afc924e029", false, "Shiree" },
+                    { "d9b5145a-739c-42d3-9e94-d2d439063d7e", 0, "0c460f08-1ce9-44e6-96ea-9aaa61954f52", "joy@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAELDudZC1Cb3+U5rxog4LmNbtGMzltL4pi07udhtw8iK2ddzfHiqzd6vOnZcqG1kaKA==", null, false, "58444edb-78f7-41c4-837c-a733a3d92944", false, "Joy" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f04840a2-54e2-49f1-acd9-05da7a32a0d4", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEOu1FrkK+q15PfISoYDnvIccbiboNHncElKzv1L540rZxILFDYuycnVm+ZuIv95Xmw==", null, false, "a68265f3-5126-45af-846a-db1203b51071", false, "Administrator" },
+                    { "f2498ab4-e4b6-4e61-92c0-9568e96a8145", 0, "824c6d8e-ab0e-4037-aec3-d7587570df16", "courtney@gmail.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEG5b+N93O2e9hQpXUYPTeWMR+bdjwvEUQti7mVro9qmJKBA7n5tyO6GHZ1HJDtS7dg==", null, false, "e7bde270-d469-401a-a29e-e7facde06722", false, "Courtney" }
                 });
 
             migrationBuilder.InsertData(
@@ -308,35 +289,6 @@ namespace CraftyCorner.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Pictures",
-                columns: new[] { "Id", "Url" },
-                values: new object[,]
-                {
-                    { 1, "https://photos.app.goo.gl/a1W2QAi5RXE7xrmt8" },
-                    { 2, "https://photos.app.goo.gl/TgrU2UY4yMrtGW2j8" },
-                    { 3, "https://photos.app.goo.gl/Xdqubxiexa5GYfhJ6" },
-                    { 4, "https://photos.app.goo.gl/Qm9c8RBRJ6yYidRx8" },
-                    { 5, "https://photos.app.goo.gl/kC9X4eGFXFc2EoVy9" },
-                    { 6, "https://photos.app.goo.gl/wUawcU2MdwRWnkdp9" },
-                    { 7, "https://photos.app.goo.gl/h3Z1Djmcy3btoR4w6" },
-                    { 8, "https://photos.app.goo.gl/zeDrmtvjsNfrLQ2y9" },
-                    { 9, "https://photos.app.goo.gl/cfi8qQ66o85h6ABa8" },
-                    { 10, "https://photos.app.goo.gl/BKDBdBUHa4Ym4dhy8" },
-                    { 11, "https://photos.app.goo.gl/tpMUcLgNXwAcmjyAA" },
-                    { 12, "https://photos.app.goo.gl/2ac6tXC3YkstNQY88" },
-                    { 13, "https://photos.app.goo.gl/vWiFzgXCxrTMzv5MA" },
-                    { 14, "https://photos.app.goo.gl/m2puCvfkXeUR3Hj88" },
-                    { 15, "https://photos.app.goo.gl/XS8gnGaM3JGjSEHy8" },
-                    { 16, "https://photos.app.goo.gl/cAvyzFM9dXCWqWw39" },
-                    { 17, "https://photos.app.goo.gl/ynKKkxUZh9QJWtZc6" },
-                    { 18, "https://photos.app.goo.gl/9BfwyoQiAJhVwYp27" },
-                    { 19, "https://photos.app.goo.gl/jdPXhF8RGFzLEQEg8" },
-                    { 20, "https://photos.app.goo.gl/Q8hbT5DivshS59sp6" },
-                    { 21, "https://photos.app.goo.gl/jGGE4FsiX8WHmtVe7" },
-                    { 22, "https://photos.app.goo.gl/Lh3cnrxbZQSuYb3p7" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" });
@@ -355,13 +307,13 @@ namespace CraftyCorner.Migrations
 
             migrationBuilder.InsertData(
                 table: "Items",
-                columns: new[] { "Id", "CategoryId", "Manufacturer", "Name", "Notes", "PictureId", "UserProfileId", "isActive" },
+                columns: new[] { "Id", "CategoryId", "Manufacturer", "Name", "Notes", "PictureUrl", "UserProfileId", "isActive" },
                 values: new object[,]
                 {
-                    { 1, 10, "Cricut", "Maker 3", "Not ready to loan this out, but I'd welcome you to come to my house to use.", 15, 5, true },
-                    { 2, 10, "Silhouette", "Cameo 4", "Requires software to run and is registered with my laptop. May need to set up a play date to use.", 2, 2, true },
-                    { 3, 2, "Sizzix", "Big Shot", "I have quite a few dies as well, not yet loaded on the site.", 3, 2, true },
-                    { 4, 8, "Cricut", "Multi Tool", "Used for weeding", 19, 3, true }
+                    { 1, 10, "Cricut", "Maker 3", "Not ready to loan this out, but I'd welcome you to come to my house to use.", "https://asset.cloudinary.com/dq4w2zwr2/7bd8376af3b8c75fc108f65acab9731b", 5, true },
+                    { 2, 10, "Silhouette", "Cameo 4", "Requires software to run and is registered with my laptop. May need to set up a play date to use.", "https://asset.cloudinary.com/dq4w2zwr2/31dad32a8f0b4158f8042333b448870e", 2, true },
+                    { 3, 2, "Sizzix", "Big Shot", "I have quite a few dies as well, not yet loaded on the site.", "https://asset.cloudinary.com/dq4w2zwr2/cd8bcc5b68fa0d1cc62eedc047d2316a", 2, true },
+                    { 4, 8, "Cricut", "Multi Tool", "Used for weeding", "https://asset.cloudinary.com/dq4w2zwr2/db2d35b8cda97d72eb7578cefccc437d", 3, true }
                 });
 
             migrationBuilder.CreateIndex(
@@ -407,11 +359,6 @@ namespace CraftyCorner.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_PictureId",
-                table: "Items",
-                column: "PictureId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Items_UserProfileId",
                 table: "Items",
                 column: "UserProfileId");
@@ -450,9 +397,6 @@ namespace CraftyCorner.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Pictures");
 
             migrationBuilder.DropTable(
                 name: "UserProfiles");
