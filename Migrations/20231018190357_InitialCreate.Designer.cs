@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CraftyCorner.Migrations
 {
     [DbContext(typeof(CraftyCornerDbContext))]
-    [Migration("20231016162429_InitialCreate")]
+    [Migration("20231018190357_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,8 +199,9 @@ namespace CraftyCorner.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("PictureId")
-                        .HasColumnType("integer");
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("UserProfileId")
                         .HasColumnType("integer");
@@ -211,8 +212,6 @@ namespace CraftyCorner.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("PictureId");
 
                     b.HasIndex("UserProfileId");
 
@@ -226,7 +225,7 @@ namespace CraftyCorner.Migrations
                             Manufacturer = "Cricut",
                             Name = "Maker 3",
                             Notes = "Not ready to loan this out, but I'd welcome you to come to my house to use.",
-                            PictureId = 15,
+                            PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/7bd8376af3b8c75fc108f65acab9731b",
                             UserProfileId = 5,
                             isActive = true
                         },
@@ -237,7 +236,7 @@ namespace CraftyCorner.Migrations
                             Manufacturer = "Silhouette",
                             Name = "Cameo 4",
                             Notes = "Requires software to run and is registered with my laptop. May need to set up a play date to use.",
-                            PictureId = 2,
+                            PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/31dad32a8f0b4158f8042333b448870e",
                             UserProfileId = 2,
                             isActive = true
                         },
@@ -248,7 +247,7 @@ namespace CraftyCorner.Migrations
                             Manufacturer = "Sizzix",
                             Name = "Big Shot",
                             Notes = "I have quite a few dies as well, not yet loaded on the site.",
-                            PictureId = 3,
+                            PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/cd8bcc5b68fa0d1cc62eedc047d2316a",
                             UserProfileId = 2,
                             isActive = true
                         },
@@ -259,7 +258,7 @@ namespace CraftyCorner.Migrations
                             Manufacturer = "Cricut",
                             Name = "Multi Tool",
                             Notes = "Used for weeding",
-                            PictureId = 19,
+                            PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/db2d35b8cda97d72eb7578cefccc437d",
                             UserProfileId = 3,
                             isActive = true
                         });
@@ -352,14 +351,14 @@ namespace CraftyCorner.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "89f75b7b-1beb-44b4-9c61-eb0d652718de",
+                            ConcurrencyStamp = "27a4d34d-eec2-4372-9777-27f1793e8b85",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
-                            ConcurrencyStamp = "a211e4bf-fd02-4793-b30e-93247bdc1860",
+                            ConcurrencyStamp = "d44b832a-ac77-4b91-8c2d-2ed4dd0541f3",
                             Name = "Courtney",
                             NormalizedName = "courtney"
                         });
@@ -458,13 +457,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "983fc01a-2cbb-4b5c-97fb-fb406fe3f85e",
+                            ConcurrencyStamp = "f04840a2-54e2-49f1-acd9-05da7a32a0d4",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEP/wmB2uI92juO7XAjZfKWGotnEL5q7uSMtbIqp6zzDgQqrTfvjutAknhYEAdDUmTg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOu1FrkK+q15PfISoYDnvIccbiboNHncElKzv1L540rZxILFDYuycnVm+ZuIv95Xmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1078d733-8869-4641-b244-9d2a44d99208",
+                            SecurityStamp = "a68265f3-5126-45af-846a-db1203b51071",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -472,13 +471,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e3e8a23-13d9-46e9-8cf0-e435c8bce704",
+                            ConcurrencyStamp = "824c6d8e-ab0e-4037-aec3-d7587570df16",
                             Email = "courtney@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEFgibnoikc203wsBGCUYuO7qiUeZw6BiPovY36mQCUVPBUhPLUME7y+eH5MWrVpnzw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG5b+N93O2e9hQpXUYPTeWMR+bdjwvEUQti7mVro9qmJKBA7n5tyO6GHZ1HJDtS7dg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9992cdfc-0b90-4d4d-8582-0e011aeeeb79",
+                            SecurityStamp = "e7bde270-d469-401a-a29e-e7facde06722",
                             TwoFactorEnabled = false,
                             UserName = "Courtney"
                         },
@@ -486,13 +485,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "d9b5145a-739c-42d3-9e94-d2d439063d7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a92a656d-845a-4d3e-98bb-5cbeb4138064",
+                            ConcurrencyStamp = "0c460f08-1ce9-44e6-96ea-9aaa61954f52",
                             Email = "joy@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAENWYXNtDRxzuiC+dNJTuzKLKszeeIPk3YqBiv/JWhiWEhzGL61Cj/SGoJaY6AuFDzQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELDudZC1Cb3+U5rxog4LmNbtGMzltL4pi07udhtw8iK2ddzfHiqzd6vOnZcqG1kaKA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "da153aa6-d779-4dfd-9429-7c41f01619e8",
+                            SecurityStamp = "58444edb-78f7-41c4-837c-a733a3d92944",
                             TwoFactorEnabled = false,
                             UserName = "Joy"
                         },
@@ -500,13 +499,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2891b839-24c0-45a5-b0a0-7b9701700575",
+                            ConcurrencyStamp = "95d25475-20b0-4e51-893b-64699c165400",
                             Email = "shiree@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEPyKTvcIJmpIOsv3mJ2muNoa0eWIY+Dn6u9MpvUMyGnALV8Oe4B8opvIr0wt1e8KNw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE7AYl1jFUzrBc0FFry2cTP/HoHTCWIeYU84qyvPpQ+Jw3ynpeppfV6TBKTd4q8t4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b855bfd-acb7-4760-9038-c6ff6d81c319",
+                            SecurityStamp = "72c4119e-0985-4c17-b0cc-a4afc924e029",
                             TwoFactorEnabled = false,
                             UserName = "Shiree"
                         },
@@ -514,13 +513,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0fa0f32c-c229-4877-8fe2-581812a8fbd6",
+                            ConcurrencyStamp = "39d593f2-8176-45b8-8753-870c4da69b19",
                             Email = "gail@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEFhJ9kw11wpvqa55dpL9oTrnriCc0uyoPLNapKRr5qDABpvb8EcPJ28sLjH72ogbXA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBsd1X8qAgohrMg3Xn99wezMmR2hGrt0dkhQhR8JUioDJTqLzFPDrysnixXsm9UPlw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c8cc3dea-7778-4dfb-8fae-002af9df0438",
+                            SecurityStamp = "49d9a574-67cc-4bb6-aca7-debb5cff62ea",
                             TwoFactorEnabled = false,
                             UserName = "Gail"
                         });
@@ -614,135 +613,6 @@ namespace CraftyCorner.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pictures");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Url = "https://photos.app.goo.gl/a1W2QAi5RXE7xrmt8"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Url = "https://photos.app.goo.gl/TgrU2UY4yMrtGW2j8"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Url = "https://photos.app.goo.gl/Xdqubxiexa5GYfhJ6"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Url = "https://photos.app.goo.gl/Qm9c8RBRJ6yYidRx8"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Url = "https://photos.app.goo.gl/kC9X4eGFXFc2EoVy9"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Url = "https://photos.app.goo.gl/wUawcU2MdwRWnkdp9"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Url = "https://photos.app.goo.gl/h3Z1Djmcy3btoR4w6"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Url = "https://photos.app.goo.gl/zeDrmtvjsNfrLQ2y9"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Url = "https://photos.app.goo.gl/cfi8qQ66o85h6ABa8"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Url = "https://photos.app.goo.gl/BKDBdBUHa4Ym4dhy8"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Url = "https://photos.app.goo.gl/tpMUcLgNXwAcmjyAA"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Url = "https://photos.app.goo.gl/2ac6tXC3YkstNQY88"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Url = "https://photos.app.goo.gl/vWiFzgXCxrTMzv5MA"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Url = "https://photos.app.goo.gl/m2puCvfkXeUR3Hj88"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Url = "https://photos.app.goo.gl/XS8gnGaM3JGjSEHy8"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Url = "https://photos.app.goo.gl/cAvyzFM9dXCWqWw39"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Url = "https://photos.app.goo.gl/ynKKkxUZh9QJWtZc6"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Url = "https://photos.app.goo.gl/9BfwyoQiAJhVwYp27"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Url = "https://photos.app.goo.gl/jdPXhF8RGFzLEQEg8"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Url = "https://photos.app.goo.gl/Q8hbT5DivshS59sp6"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Url = "https://photos.app.goo.gl/jGGE4FsiX8WHmtVe7"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Url = "https://photos.app.goo.gl/Lh3cnrxbZQSuYb3p7"
-                        });
-                });
-
             modelBuilder.Entity("CraftyCorner.Models.UserProfile", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
@@ -762,12 +632,6 @@ namespace CraftyCorner.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Picture", "Picture")
-                        .WithMany()
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CraftyCorner.Models.UserProfile", "UserProfile")
                         .WithMany()
                         .HasForeignKey("UserProfileId")
@@ -775,8 +639,6 @@ namespace CraftyCorner.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-
-                    b.Navigation("Picture");
 
                     b.Navigation("UserProfile");
                 });

@@ -33,7 +33,7 @@ export default function ItemDetails({ detailsItemId }) {
                     <CardTitle tag="h4">{item.manufacturer} {item.name}</CardTitle>
                     <p>Owner: {item.userProfile.fullName}</p>
                     <p>{item.category.name}</p>
-                    <img src={item.picture.url} alt={item.name} />
+                    <img src={item.pictureUrl} alt={item.name} />
                     <p>{item.notes}</p>
                 </CardBody>
                 <CardFooter>

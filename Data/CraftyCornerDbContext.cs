@@ -12,8 +12,6 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Category> Categories { get; set; }
     public DbSet<Item> Items { get; set; }
     public DbSet<ItemComment> ItemComments { get; set; }
-    public DbSet<Picture> Pictures { get; set; }
-
     public CraftyCornerDbContext(DbContextOptions<CraftyCornerDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -154,33 +152,6 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
         }
         );
 
-        modelBuilder.Entity<Picture>().HasData(new Picture[]
-        {
-            new Picture { Id = 1, Url = "https://photos.app.goo.gl/a1W2QAi5RXE7xrmt8" }, // no image available
-            new Picture { Id = 2, Url = "https://photos.app.goo.gl/TgrU2UY4yMrtGW2j8" }, // Cameo 4
-            new Picture { Id = 3, Url = "https://photos.app.goo.gl/Xdqubxiexa5GYfhJ6" }, // Sizzix Big Shot
-            new Picture { Id = 4, Url = "https://photos.app.goo.gl/Qm9c8RBRJ6yYidRx8" }, // EZ Bowz
-            new Picture { Id = 5, Url = "https://photos.app.goo.gl/kC9X4eGFXFc2EoVy9" }, // T-Shirt guide
-            new Picture { Id = 6, Url = "https://photos.app.goo.gl/wUawcU2MdwRWnkdp9" }, // Cameo 5
-            new Picture { Id = 7, Url = "https://photos.app.goo.gl/h3Z1Djmcy3btoR4w6" }, // Xtool Laser
-            new Picture { Id = 8, Url = "https://photos.app.goo.gl/zeDrmtvjsNfrLQ2y9" }, // Anbestor heat press
-            new Picture { Id = 9, Url = "https://photos.app.goo.gl/cfi8qQ66o85h6ABa8" }, // Silhouette pens
-            new Picture { Id = 10, Url = "https://photos.app.goo.gl/BKDBdBUHa4Ym4dhy8" }, // iVyne light pad
-            new Picture { Id = 11, Url = "https://photos.app.goo.gl/tpMUcLgNXwAcmjyAA" }, // iVyne weeding scrap collector
-            new Picture { Id = 12, Url = "https://photos.app.goo.gl/2ac6tXC3YkstNQY88" }, // Gemini embosser
-            new Picture { Id = 13, Url = "https://photos.app.goo.gl/vWiFzgXCxrTMzv5MA" }, // Brother ScanNCut
-            new Picture { Id = 14, Url = "https://photos.app.goo.gl/m2puCvfkXeUR3Hj88" }, // iVyne weeding set
-            new Picture { Id = 15, Url = "https://photos.app.goo.gl/XS8gnGaM3JGjSEHy8" }, // Cricut Maker 3
-            new Picture { Id = 16, Url = "https://photos.app.goo.gl/cAvyzFM9dXCWqWw39" }, // Cricut ExploreAir 2
-            new Picture { Id = 17, Url = "https://photos.app.goo.gl/ynKKkxUZh9QJWtZc6" }, // Cricut Heat Press
-            new Picture { Id = 18, Url = "https://photos.app.goo.gl/9BfwyoQiAJhVwYp27" }, // Cricut Joy Xtra
-            new Picture { Id = 19, Url = "https://photos.app.goo.gl/jdPXhF8RGFzLEQEg8" }, // Cricut multi tool
-            new Picture { Id = 20, Url = "https://photos.app.goo.gl/Q8hbT5DivshS59sp6" }, // Cricut mug press
-            new Picture { Id = 21, Url = "https://photos.app.goo.gl/jGGE4FsiX8WHmtVe7" }, // ? brayer
-            new Picture { Id = 22, Url = "https://photos.app.goo.gl/Lh3cnrxbZQSuYb3p7" } // Gel Press
-        }
-        );
-
         modelBuilder.Entity<Item>().HasData(new Item[]
         {
             new Item
@@ -191,8 +162,8 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
                 Notes = "Not ready to loan this out, but I'd welcome you to come to my house to use.",
                 isActive = true,
                 CategoryId = 10,
-                PictureId = 15,
-                UserProfileId = 5
+                UserProfileId = 5,
+                PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/7bd8376af3b8c75fc108f65acab9731b"
             },
             new Item
             {
@@ -202,7 +173,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
                 Notes = "Requires software to run and is registered with my laptop. May need to set up a play date to use.",
                 isActive = true,
                 CategoryId = 10,
-                PictureId = 2,
+                PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/31dad32a8f0b4158f8042333b448870e",
                 UserProfileId = 2
             },
             new Item
@@ -213,7 +184,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
                 Notes = "I have quite a few dies as well, not yet loaded on the site.",
                 isActive = true,
                 CategoryId = 2,
-                PictureId = 3,
+                PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/cd8bcc5b68fa0d1cc62eedc047d2316a",
                 UserProfileId = 2
             },
             new Item
@@ -224,7 +195,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
                 Notes = "Used for weeding",
                 isActive = true,
                 CategoryId = 8,
-                PictureId = 19,
+                PictureUrl = "https://asset.cloudinary.com/dq4w2zwr2/db2d35b8cda97d72eb7578cefccc437d",
                 UserProfileId = 3
             }
         }

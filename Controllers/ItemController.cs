@@ -22,7 +22,6 @@ public class ItemController : ControllerBase
     {
         return Ok(_dbContext.Items
         .Include(i => i.UserProfile)
-        .Include(i => i.Picture)
         .Include(i => i.Category)
         .ToList()
         );
@@ -35,7 +34,6 @@ public class ItemController : ControllerBase
         Item item = _dbContext
             .Items
             .Include(i => i.Category)
-            .Include(i => i.Picture)
             .Include(i => i.UserProfile)
             .SingleOrDefault(i => i.Id == id);
 

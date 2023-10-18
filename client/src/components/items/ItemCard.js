@@ -10,7 +10,7 @@ export default function ItemCard({ item, setDetailsItemId }) {
                     {item.manufacturer} {item.name}
                 </CardSubtitle>
                 <CardText>Owner: {item.userProfile.fullName}</CardText>
-                <div><img src={item.picture.url} alt={item.name} />
+                <div><img src={item.pictureUrl} alt={item.name} />
                 </div>
                 <Button
                     color="dark"
