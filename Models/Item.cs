@@ -10,10 +10,10 @@ public class Item
     public string Manufacturer { get; set; }
     public string Notes { get; set; }
     public bool isActive { get; set; }
-    public int? CategoryId { get; set; }
-    public Category Category { get; set; }
+    public int CategoryId { get; set; }
+    public Category? Category { get; set; }
     public int PictureId { get; set; }
-    public Picture Picture { get; set; }
+    public Picture? Picture { get; set; }
     public int UserProfileId { get; set; }
-    public UserProfile UserProfile { get; set; }
+    public UserProfile? UserProfile { get; set; }
 }

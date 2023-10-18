@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { getItems } from "../../managers/itemManager";
 import ItemCard from "./ItemCard";
+import { CreateItemModal } from "./CreateItemModal";
+import { Button, Modal, ModalHeader } from "reactstrap";
 
-export default function ItemList({ setDetailsItemId }) {
+export default function ItemList({ setDetailsItemId, loggedInUser }) {
     const [items, setItems] = useState([]);
+
+    const [createModal, setCreateModal] = useState(false);
 
     const getAllItems = () => {
         getItems().then(setItems);
@@ -13,10 +17,19 @@ export default function ItemList({ setDetailsItemId }) {
         getAllItems();
     }, []);
 
+    const toggle = () => {
+        setCreateModal(!createModal)
+    };
+
     return (
         <div className="container">
             <div className="sub-menu bg-light">
                 <h2>Items</h2>
+                <Button
+                    color="success"
+                    onClick={toggle}>
+                    Create Item
+                </Button>
                 {items.map((item) => (
                     <ItemCard
                         item={item}
@@ -25,6 +38,10 @@ export default function ItemList({ setDetailsItemId }) {
                     ></ItemCard>
                 ))}
             </div>
+            <Modal isOpen={createModal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>Add Item</ModalHeader>
+                <CreateItemModal toggle={toggle} getAllItems={getAllItems} loggedInUser={loggedInUser} />
+            </Modal>
         </div>
     );
 }

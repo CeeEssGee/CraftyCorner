@@ -33,6 +33,15 @@ export const CategoryList = ({ loggedInUser }) => {
         <div className="container">
             <div className="sub-menu bg-light">
                 <h4>Categories</h4>
+                {loggedInUser?.roles.includes("Admin") ? (
+                    <Button
+                        color="success"
+                        onClick={toggle}>
+                        Create Category
+                    </Button>
+                ) : (
+                    ""
+                )}
                 <Table>
                     <thead>
                         <tr>
@@ -71,15 +80,7 @@ export const CategoryList = ({ loggedInUser }) => {
                     </tbody>
                 </Table>
             </div>
-            {loggedInUser?.roles.includes("Admin") ? (
-                <Button
-                    color="success"
-                    onClick={toggle}>
-                    Create Category
-                </Button>
-            ) : (
-                ""
-            )}
+
             <Modal isOpen={createModal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Add Category</ModalHeader>
                 <CreateCategoryModal toggle={toggle} getAllCategories={getAllCategories} />

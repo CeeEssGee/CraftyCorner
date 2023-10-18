@@ -46,4 +46,14 @@ public class ItemController : ControllerBase
 
         return Ok(item);
     }
+
+    [HttpPost]
+    // [Authorize]
+    public IActionResult CreateItem(Item item)
+    {
+        item.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == item.UserProfileId);
+        _dbContext.Items.Add(item);
+        _dbContext.SaveChanges();
+        return Created($"api/item/{item.Id}", item);
+    }
 }
