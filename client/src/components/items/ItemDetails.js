@@ -36,14 +36,25 @@ export default function ItemDetails({ detailsItemId }) {
                     <img src={item.pictureUrl} alt={item.name} />
                     <p>{item.notes}</p>
                 </CardBody>
-                {item.comments.map((c) => (
-                    <div key={`comment--${c.id}`}>
-                        {c.body}
-                    </div>
-                ))}
+
                 <CardFooter>
                     Comments:
+                    {item.itemComments.map((c) => (
+                        <div key={`comment--${c.id}`}>
 
+                            {/* How do I get the userProfile's name? */}
+
+                            {/* {c.userProfile.map((up) => (
+                                <div key={`up--${up.id}`}>
+                                    {up.fullName}
+                                </div>
+                            ))} */}
+
+                            {/* <p>{c.userProfile.fullName}</p>  */}
+                            <p>{c.date}</p>
+                            <p>{c.body}</p>
+                        </div>
+                    ))}
                 </CardFooter>
             </Card>
         </>
