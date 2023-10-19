@@ -1,21 +1,15 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 import ItemDetails from "./ItemDetails";
+import { ItemSearch } from "./ItemSearch";
 
 
 export default function Items({ loggedInUser }) {
-    const [detailsItemId, setDetailsItemId] = useState(null);
+    // const [detailsItemId, setDetailsItemId] = useState(null);
+    const [searchTerms, setSearchTerms] = useState("");
 
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-6">
-                    <ItemList setDetailsItemId={setDetailsItemId} loggedInUser={loggedInUser} />
-                </div>
-                <div className="col-sm-6">
-                    <ItemDetails detailsItemId={detailsItemId} />
-                </div>
-            </div>
-        </div>
-    );
+    return <>
+        <ItemSearch setterFunction={setSearchTerms} />
+        <ItemList loggedInUser={loggedInUser} searchTermState={searchTerms} />
+    </>
 }
