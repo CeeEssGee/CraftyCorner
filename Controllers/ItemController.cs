@@ -35,7 +35,7 @@ public class ItemController : ControllerBase
             .Items
             .Include(i => i.Category)
             .Include(i => i.UserProfile)
-            .Include(i => i.ItemComment)
+            .Include(i => i.ItemComments)
             .SingleOrDefault(i => i.Id == id);
 
         if (item == null)
