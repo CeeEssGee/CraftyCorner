@@ -34,6 +34,8 @@ export default function ItemList({ setDetailsItemId, loggedInUser }) {
                     <ItemCard
                         item={item}
                         setDetailsItemId={setDetailsItemId}
+                        loggedInUser={loggedInUser}
+                        getAllItems={getAllItems}
                         key={`item-${item.id}`}
                     ></ItemCard>
                 ))}

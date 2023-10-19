@@ -36,6 +36,11 @@ export default function ItemDetails({ detailsItemId }) {
                     <img src={item.pictureUrl} alt={item.name} />
                     <p>{item.notes}</p>
                 </CardBody>
+                {item.comments.map((c) => (
+                    <div key={`comment--${c.id}`}>
+                        {c.body}
+                    </div>
+                ))}
                 <CardFooter>
                     Comments:
 
