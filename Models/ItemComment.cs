@@ -5,7 +5,9 @@ public class ItemComment
 {
     public int Id { get; set; }
     public int ItemId { get; set; }
+    public Item? Item { get; set; }
     public int UserProfileId { get; set; }
+    public UserProfile UserProfile { get; set; }
     public DateTime Date { get; set; }
     [Required]
     public string Body { get; set; }

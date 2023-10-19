@@ -1,4 +1,4 @@
-const _apiURL = "api/item";
+const _apiURL = "/api/item";
 
 export const getItems = () => {
     return fetch(_apiURL)
@@ -16,4 +16,10 @@ export const createItem = (item) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),
     }).then((res) => res.json());
+};
+
+export const deleteItem = (id) => {
+    return fetch(`${_apiURL}/${id}`, {
+        method: "DELETE"
+    });
 };

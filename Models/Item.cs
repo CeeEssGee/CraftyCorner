@@ -16,4 +16,5 @@ public class Item
     public string PictureUrl { get; set; }
     public int UserProfileId { get; set; }
     public UserProfile? UserProfile { get; set; }
+    public ItemComment? ItemComment { get; set; }
 }
