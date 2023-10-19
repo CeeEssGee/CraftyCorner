@@ -3,8 +3,9 @@ import { deleteItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
 
 
-export default function ItemCard({ item, setDetailsItemId, loggedInUser, getAllItems }) {
+export default function ItemCard({ item, loggedInUser, getAllItems }) {
     const navigate = useNavigate();
+
 
     return (
         <Card color="dark" outline style={{ marginBottom: "4px" }}>
@@ -19,12 +20,7 @@ export default function ItemCard({ item, setDetailsItemId, loggedInUser, getAllI
                 <Button
                     color="info"
                     onClick={() => {
-                        setDetailsItemId(item.id);
-                        window.scrollTo({
-                            top: 0,
-                            left: 0,
-                            behavior: "smooth",
-                        });
+                        navigate(`/items/${item.id}`)
                     }}
                 >
                     Show Details
@@ -42,6 +38,6 @@ export default function ItemCard({ item, setDetailsItemId, loggedInUser, getAllI
                     ""
                 )}
             </CardBody>
-        </Card>
+        </Card >
     );
 }

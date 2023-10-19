@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 // import ItemList from "./items/ItemList";
 import Items from "./items/Items";
 import { CategoryList } from "./categories/CategoryList";
+import ItemDetails from "./items/ItemDetails";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -20,14 +21,22 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route
-          path="items"
+        <Route path="items"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <Items loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
+
+        <Route path="items/:itemId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <ItemDetails loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
         <Route path="categories">
           <Route
             index

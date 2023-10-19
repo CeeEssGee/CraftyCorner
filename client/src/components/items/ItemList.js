@@ -4,8 +4,9 @@ import ItemCard from "./ItemCard";
 import { CreateItemModal } from "./CreateItemModal";
 import { Button, Modal, ModalHeader } from "reactstrap";
 
-export default function ItemList({ setDetailsItemId, loggedInUser }) {
+export default function ItemList({ searchTermState, loggedInUser }) {
     const [items, setItems] = useState([]);
+    const [filteredItems, setFiltered] = useState([]);
 
     const [createModal, setCreateModal] = useState(false);
 
@@ -16,6 +17,13 @@ export default function ItemList({ setDetailsItemId, loggedInUser }) {
     useEffect(() => {
         getAllItems();
     }, []);
+
+    useEffect(() => {
+        const searchedItems = items.filter(item =>
+            item.manufacturer.toLowerCase().includes(searchTermState.toLowerCase()) || item.name.toLowerCase().includes(searchTermState.toLowerCase()) || item.userProfile.fullName.toLowerCase().includes(searchTermState.toLowerCase()) || item.category.name.toLowerCase().includes(searchTermState.toLowerCase()))
+        setFiltered(searchedItems)
+
+    }, [searchTermState, items])
 
     const toggle = () => {
         setCreateModal(!createModal)
@@ -30,10 +38,9 @@ export default function ItemList({ setDetailsItemId, loggedInUser }) {
                     onClick={toggle}>
                     Create Item
                 </Button>
-                {items.map((item) => (
+                {filteredItems.map((item) => (
                     <ItemCard
                         item={item}
-                        setDetailsItemId={setDetailsItemId}
                         loggedInUser={loggedInUser}
                         getAllItems={getAllItems}
                         key={`item-${item.id}`}
