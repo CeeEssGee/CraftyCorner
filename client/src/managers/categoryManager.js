@@ -1,4 +1,4 @@
-const _apiURL = "api/category";
+const _apiURL = "/api/category";
 
 export const getCategories = () => {
     return fetch(_apiURL)

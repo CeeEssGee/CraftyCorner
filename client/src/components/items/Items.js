@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
-import ItemDetails from "./ItemDetails";
 import { ItemSearch } from "./ItemSearch";
 
 

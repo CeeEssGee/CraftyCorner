@@ -6,10 +6,17 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function ItemDetails({ loggedInUser }) {
     const [item, setItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState();
+
+    const [editModal, setEditModal] = useState(false);
+
 
     const { itemId } = useParams();
     const navigate = useNavigate();
 
+    const editToggle = () => {
+        setEditModal(!editModal)
+    };
 
     const getItemDetails = (itemId) => {
         getItemById(itemId).then(setItem);
@@ -32,6 +39,17 @@ export default function ItemDetails({ loggedInUser }) {
                 </CardBody>
 
                 <CardFooter>
+                    {loggedInUser.id === item?.userProfile.id || loggedInUser.roles.includes("Admin") ? (
+                        <Button
+                            color="warning"
+                            onClick={() => {
+                                navigate("edit")
+                            }}
+                        >Edit</Button>
+                    ) : (
+                        ""
+                    )}
+
                     {loggedInUser.id === item?.userProfile.id || loggedInUser.roles.includes("Admin") ? (
                         <Button
                             color="danger"
