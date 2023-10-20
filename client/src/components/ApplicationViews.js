@@ -6,6 +6,7 @@ import Register from "./auth/Register";
 import Items from "./items/Items";
 import { CategoryList } from "./categories/CategoryList";
 import ItemDetails from "./items/ItemDetails";
+import { EditItem } from "./items/EditItem";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -33,6 +34,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <ItemDetails loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route path="items/:itemId/edit"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditItem loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

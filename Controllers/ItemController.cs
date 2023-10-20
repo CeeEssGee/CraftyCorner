@@ -23,6 +23,7 @@ public class ItemController : ControllerBase
         return Ok(_dbContext.Items
         .Include(i => i.UserProfile)
         .Include(i => i.Category)
+        .OrderBy(i => i.Manufacturer)
         .ToList()
         );
     }
@@ -69,5 +70,30 @@ public class ItemController : ControllerBase
             return NoContent();
         }
         return NotFound();
+    }
+
+    [HttpPut("{id}/edit")]
+    // [Authorize]
+    public IActionResult UpdateItem(int id, Item item)
+    {
+        Item itemToUpdate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
+
+        if (itemToUpdate == null)
+        {
+            return NotFound();
+        }
+        if (id != itemToUpdate.Id)
+        {
+            return BadRequest();
+        }
+
+        itemToUpdate.Name = item.Name;
+        itemToUpdate.Manufacturer = item.Manufacturer;
+        itemToUpdate.Notes = item.Notes;
+        itemToUpdate.isActive = true;
+        itemToUpdate.CategoryId = item.CategoryId;
+        itemToUpdate.PictureUrl = item.PictureUrl;
+        _dbContext.SaveChanges();
+        return NoContent();
     }
 }

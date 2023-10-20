@@ -23,3 +23,11 @@ export const deleteItem = (id) => {
         method: "DELETE"
     });
 };
+
+export const updateItem = (id, item) => {
+    return fetch(`${_apiURL}/${id}/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item)
+    });
+};
