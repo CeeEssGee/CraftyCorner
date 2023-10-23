@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Button, Card, CardBody, CardFooter, CardSubtitle, CardTitle } from "reactstrap";
 import { deleteItem, getItemById, getItems } from "../../managers/itemManager";
 import { useNavigate, useParams } from "react-router-dom";
+import { getItemComments } from "../../managers/itemCommentManager";
 
 
 export default function ItemDetails({ loggedInUser }) {
     const [item, setItem] = useState(null);
     const [selectedItem, setSelectedItem] = useState();
+    const [itemComments, setItemComments] = useState([]);
 
     const [editModal, setEditModal] = useState(false);
 
@@ -20,6 +22,7 @@ export default function ItemDetails({ loggedInUser }) {
 
     const getItemDetails = (itemId) => {
         getItemById(itemId).then(setItem);
+        getItemComments().then(setItemComments);
     };
 
     useEffect(() => {
@@ -64,21 +67,13 @@ export default function ItemDetails({ loggedInUser }) {
                     )}
                 </CardFooter>
             </Card>
-            Comments:
-            {item?.itemComments.map((c) => (
-                <div key={`comment--${c.id}`}>
+            <h3>Comments: </h3>
 
-                    {/* How do I get the userProfile's name? */}
-
-                    {/* {c.userProfile.map((up) => (
-                                <div key={`up--${up.id}`}>
-                                    {up.fullName}
-                                </div>
-                            ))} */}
-
-                    {/* <p>{c.userProfile.fullName}</p>  */}
-                    <p>{c.date.split("T")[0]}</p>
-                    <p>{c.body}</p>
+            {itemComments.map((ic) => (
+                <div className="comments" key={`comment--${ic.id}`}>
+                    <h5>{ic.date.split("T")[0]} {ic.userProfile.fullName} </h5>
+                    <h6>Borrow Request: {ic.borrowRequest.toString()}</h6>
+                    <p>{ic.body}</p>
                 </div>
             ))}
         </>
