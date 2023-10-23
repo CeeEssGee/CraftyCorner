@@ -10,6 +10,7 @@ export const EditItem = () => {
     const [categoryId, setCategoryId] = useState(0);
     const [manufacturer, setManufacturer] = useState("")
     const [name, setName] = useState("")
+    const [isActive, setIsActive] = useState("true")
     const [notes, setNotes] = useState("")
     const [pictureUrl, setPictureUrl] = useState("");
     const [item, setItem] = useState({
@@ -17,7 +18,8 @@ export const EditItem = () => {
         name: "",
         notes: "",
         pictureUrl: "",
-        categoryId: ""
+        categoryId: "",
+        isActive: "true"
     })
 
     const { itemId } = useParams();
@@ -35,7 +37,8 @@ export const EditItem = () => {
             name: name ? name : item.name,
             notes: notes ? notes : item.notes,
             pictureUrl: pictureUrl ? pictureUrl : item.pictureUrl,
-            categoryId: categoryId ? categoryId : item.categoryId
+            categoryId: categoryId ? categoryId : item.categoryId,
+            isActive: isActive ? isActive : item.isActive
         }
         updateItem(parseInt(itemId), itemToSendToAPI).then(() => navigate(`/items/${parseInt(itemId)}`))
     }
@@ -63,6 +66,21 @@ export const EditItem = () => {
                             copy.name = e.target.value
                             setItem(copy)
                         }} />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label htmlFor="isActive">Active?
+                    </Label>
+                    <Input
+                        type="checkbox"
+                        name="isActive"
+                        value={item.isActive}
+                        onChange={(e) => {
+                            const copy = { ...item }
+                            copy.isActive = e.target.checked
+                            setItem(copy);
+                        }}
+                    />
                 </FormGroup>
 
                 <FormGroup>
