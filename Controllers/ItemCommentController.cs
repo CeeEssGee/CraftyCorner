@@ -1,4 +1,5 @@
 using CraftyCorner.Data;
+using CraftyCorner.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,16 +17,31 @@ public class ItemCommentController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("{itemId}")]
     // [Authorize]
-    public IActionResult GetItemComments()
+    public IActionResult GetItemComments(int itemId)
     {
-        return Ok(_dbContext.ItemComments
+        List<ItemComment> foundItemComments =
+        _dbContext.ItemComments
         .Include(ic => ic.UserProfile)
         .Include(ic => ic.Item)
         .OrderBy(ic => ic.Date)
-        .ToList()
-        );
+        .Where(ic => ic.ItemId == itemId)
+        .ToList();
+
+        return Ok(foundItemComments);
+
+    }
+
+    [HttpPost]
+    // [Authorize]
+    public IActionResult CreateComment(ItemComment itemComment)
+    {
+        itemComment.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == itemComment.UserProfileId);
+        itemComment.Date = DateTime.Now;
+        _dbContext.ItemComments.Add(itemComment);
+        _dbContext.SaveChanges();
+        return Created($"api/itemComment/{itemComment.Id}", itemComment);
     }
 
 }

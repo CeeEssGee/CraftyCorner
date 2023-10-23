@@ -288,6 +288,10 @@ namespace CraftyCorner.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("UserProfileId");
+
                     b.ToTable("ItemComments");
 
                     b.HasData(
@@ -349,14 +353,14 @@ namespace CraftyCorner.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "27a4d34d-eec2-4372-9777-27f1793e8b85",
+                            ConcurrencyStamp = "7401e087-07f3-4307-bb13-8236a56e1bc8",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
-                            ConcurrencyStamp = "d44b832a-ac77-4b91-8c2d-2ed4dd0541f3",
+                            ConcurrencyStamp = "43796b38-72ee-4764-869c-999a7868ef73",
                             Name = "Courtney",
                             NormalizedName = "courtney"
                         });
@@ -455,13 +459,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f04840a2-54e2-49f1-acd9-05da7a32a0d4",
+                            ConcurrencyStamp = "d08f9ea5-23b8-4ee9-91ba-5de59731874f",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEOu1FrkK+q15PfISoYDnvIccbiboNHncElKzv1L540rZxILFDYuycnVm+ZuIv95Xmw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJlAxgXDrLplob1dtOj3/wrxV+ho9ug/mYOIE3/jTBYdBHOAyIVSnCLMhzl/+8yjng==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a68265f3-5126-45af-846a-db1203b51071",
+                            SecurityStamp = "1713bf1c-7e40-4b1c-8fc8-a222ac23c353",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -469,13 +473,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "824c6d8e-ab0e-4037-aec3-d7587570df16",
+                            ConcurrencyStamp = "c8e0c4d3-0f5f-4a67-9256-d4467d5e6c21",
                             Email = "courtney@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEG5b+N93O2e9hQpXUYPTeWMR+bdjwvEUQti7mVro9qmJKBA7n5tyO6GHZ1HJDtS7dg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEASgVJuU12PaLDX65ibkVLRU6ay8Ijc7iHoPBpFfOxCZpkxe/a9SuoefrmiBcgdXbA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7bde270-d469-401a-a29e-e7facde06722",
+                            SecurityStamp = "9ed967f6-4d36-4849-90e9-1a791bf38607",
                             TwoFactorEnabled = false,
                             UserName = "Courtney"
                         },
@@ -483,13 +487,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "d9b5145a-739c-42d3-9e94-d2d439063d7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c460f08-1ce9-44e6-96ea-9aaa61954f52",
+                            ConcurrencyStamp = "cd737be1-46be-4bf7-82fb-624b8e73ed68",
                             Email = "joy@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAELDudZC1Cb3+U5rxog4LmNbtGMzltL4pi07udhtw8iK2ddzfHiqzd6vOnZcqG1kaKA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEiorLNa6NAk19R/IDszHyVyPkcs2rQgIAMWH8IF12q3AE47tl2N/sX7N2Wz7RZy2w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "58444edb-78f7-41c4-837c-a733a3d92944",
+                            SecurityStamp = "b189483e-8103-4f58-b952-9b5ca8fc6c98",
                             TwoFactorEnabled = false,
                             UserName = "Joy"
                         },
@@ -497,13 +501,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "95d25475-20b0-4e51-893b-64699c165400",
+                            ConcurrencyStamp = "1472d487-7f89-48f0-b657-0ab834f3c991",
                             Email = "shiree@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEE7AYl1jFUzrBc0FFry2cTP/HoHTCWIeYU84qyvPpQ+Jw3ynpeppfV6TBKTd4q8t4w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKVlJkrYeFjk3E0DcC2VbhSjTyX/hCrAGELJto5Z37bnX4rXeLsQ1BBDUqOi9AqJRw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "72c4119e-0985-4c17-b0cc-a4afc924e029",
+                            SecurityStamp = "1b97f33a-b3ab-48de-8d6f-d24ba4337873",
                             TwoFactorEnabled = false,
                             UserName = "Shiree"
                         },
@@ -511,13 +515,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39d593f2-8176-45b8-8753-870c4da69b19",
+                            ConcurrencyStamp = "6b37a3c7-a779-4f52-864b-7e0371c0eaa5",
                             Email = "gail@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEBsd1X8qAgohrMg3Xn99wezMmR2hGrt0dkhQhR8JUioDJTqLzFPDrysnixXsm9UPlw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGUuMSqggRtxolibhqOzLhlOxq/3rV7YZgdhgtYErkuXPjPGg79MHErZau960VJQNw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "49d9a574-67cc-4bb6-aca7-debb5cff62ea",
+                            SecurityStamp = "ce8db05a-1100-4a0d-a8e7-e66c2a01b41d",
                             TwoFactorEnabled = false,
                             UserName = "Gail"
                         });
@@ -641,6 +645,25 @@ namespace CraftyCorner.Migrations
                     b.Navigation("UserProfile");
                 });
 
+            modelBuilder.Entity("ItemComment", b =>
+                {
+                    b.HasOne("Item", "Item")
+                        .WithMany("ItemComments")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CraftyCorner.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("UserProfile");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -690,6 +713,11 @@ namespace CraftyCorner.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Item", b =>
+                {
+                    b.Navigation("ItemComments");
                 });
 #pragma warning restore 612, 618
         }
