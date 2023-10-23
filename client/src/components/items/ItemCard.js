@@ -14,7 +14,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 <CardSubtitle className="mb-2 text-muted" tag="h4">
                     {item.manufacturer} {item.name}
                 </CardSubtitle>
-                <CardText>Owner: {item.userProfile.fullName}</CardText>
+                <CardText>Owner: {item?.userProfile?.fullName}</CardText>
                 <div><img src={item.pictureUrl} alt={item.name} />
                 </div>
                 <Button
