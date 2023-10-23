@@ -7,6 +7,7 @@ import Items from "./items/Items";
 import { CategoryList } from "./categories/CategoryList";
 import ItemDetails from "./items/ItemDetails";
 import { EditItem } from "./items/EditItem";
+import { MyProfile } from "./userProfiles/MyProfile";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -55,23 +56,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               </AuthorizedRoute>
             }
           />
-          <Route
-            path="create"
-            element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                {/* <CategoryCreate /> */}
-              </AuthorizedRoute>
-            }
-          />
+
         </Route>
+
         <Route
-          path="employees"
+          path="profile"
           element={
-            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-              {/* <UserProfileList /> */}
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MyProfile loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
+
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

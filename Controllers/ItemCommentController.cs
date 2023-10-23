@@ -1,3 +1,4 @@
+using System.Net.NetworkInformation;
 using CraftyCorner.Data;
 using CraftyCorner.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -15,6 +16,19 @@ public class ItemCommentController : ControllerBase
     public ItemCommentController(CraftyCornerDbContext context)
     {
         _dbContext = context;
+    }
+
+    [HttpGet]
+    // [Authorize]
+    public IActionResult GetItemCommentsByUserId()
+    {
+        List<ItemComment> foundItemComments =
+        _dbContext.ItemComments
+        .Include(ic => ic.UserProfile)
+        .Include(ic => ic.Item)
+        .ToList();
+
+        return Ok(foundItemComments);
     }
 
     [HttpGet("{itemId}")]
@@ -42,6 +56,22 @@ public class ItemCommentController : ControllerBase
         _dbContext.ItemComments.Add(itemComment);
         _dbContext.SaveChanges();
         return Created($"api/itemComment/{itemComment.Id}", itemComment);
+    }
+
+    [HttpGet("filtered/{userId}")]
+    // [Authorize]
+    public IActionResult FilteredItemComments(int userId)
+    {
+        List<ItemComment> foundItemComments =
+        _dbContext.ItemComments
+        .Include(ic => ic.Item)
+        .ThenInclude(i => i.UserProfile)
+        .OrderBy(ic => ic.Date)
+        .Where(ic => ic.UserProfileId == userId && ic.BorrowRequest == true)
+        .ToList();
+
+        return Ok(foundItemComments);
+
     }
 
 }
