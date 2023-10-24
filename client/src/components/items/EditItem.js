@@ -38,7 +38,7 @@ export const EditItem = () => {
             notes: notes ? notes : item.notes,
             pictureUrl: pictureUrl ? pictureUrl : item.pictureUrl,
             categoryId: categoryId ? categoryId : item.categoryId,
-            isActive: item.isActive
+
         }
         updateItem(parseInt(itemId), itemToSendToAPI).then(() => navigate(`/items/${parseInt(itemId)}`))
     }
@@ -66,21 +66,6 @@ export const EditItem = () => {
                             copy.name = e.target.value
                             setItem(copy)
                         }} />
-                </FormGroup>
-
-                <FormGroup>
-                    <Label htmlFor="isActive">Active?
-                    </Label>
-                    <Input
-                        type="checkbox"
-                        name="isActive"
-                        value={item.isActive}
-                        onChange={(e) => {
-                            const copy = { ...item }
-                            copy.isActive = e.target.checked
-                            setItem(copy);
-                        }}
-                    />
                 </FormGroup>
 
                 <FormGroup>
