@@ -38,7 +38,7 @@ export const EditItem = () => {
             notes: notes ? notes : item.notes,
             pictureUrl: pictureUrl ? pictureUrl : item.pictureUrl,
             categoryId: categoryId ? categoryId : item.categoryId,
-            isActive: isActive ? isActive : item.isActive
+            isActive: item.isActive
         }
         updateItem(parseInt(itemId), itemToSendToAPI).then(() => navigate(`/items/${parseInt(itemId)}`))
     }

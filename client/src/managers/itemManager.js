@@ -31,3 +31,22 @@ export const updateItem = (id, item) => {
         body: JSON.stringify(item)
     });
 };
+
+export const getItemByUserId = (userId) => {
+    return fetch(`${_apiURL}/${userId}/userId`)
+        .then((res) => res.json());
+};
+
+export const deactivateItem = (id) => {
+    return fetch(`${_apiURL}/${id}/deactivate`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+    });
+};
+
+export const reactivateItem = (id) => {
+    return fetch(`${_apiURL}/${id}/reactivate`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+    });
+};
