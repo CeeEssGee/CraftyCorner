@@ -3,6 +3,8 @@ import { getItems } from "../../managers/itemManager";
 import ItemCard from "./ItemCard";
 import { CreateItemModal } from "./CreateItemModal";
 import { Button, Modal, ModalHeader } from "reactstrap";
+import "./Item.css"
+
 
 export default function ItemList({ searchTermState, loggedInUser }) {
     const [items, setItems] = useState([]);

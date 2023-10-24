@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { deactivateItem, deleteItem, reactivateItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
+import "./Item.css"
 
 
 export default function ItemCard({ item, loggedInUser, getAllItems }) {
