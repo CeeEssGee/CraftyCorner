@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { deactivateItem, deleteItem, reactivateItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
 import "./Item.css"
@@ -9,7 +9,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
 
 
     return (
-        <Card color="dark" outline style={{ marginBottom: "4px" }}>
+        <Card className="itemCard" color="dark" outline style={{ marginBottom: "4px" }}>
             <CardBody>
                 {/* <CardTitle tag="h5">{item.Name}</CardTitle> */}
                 <CardSubtitle className="mb-2 text-muted" tag="h4">
@@ -18,30 +18,18 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 <CardText>Owner: {item?.userProfile?.fullName}</CardText>
                 <div><img src={item.pictureUrl} alt={item.name} />
                 </div>
-                <Button
-                    color="info"
+            </CardBody>
+            <CardFooter className="cardFooter">
+                <Button className="detailsButton"
                     onClick={() => {
                         navigate(`/items/${item.id}`)
                     }}
                 >
                     Show Details
                 </Button>
-                {loggedInUser.id === item.userProfile.id || loggedInUser.roles.includes("Admin") ? (
-                    <Button
-                        color="danger"
-                        onClick={() => {
-                            deleteItem(item.id).then(() => {
-                                getAllItems()
-                            })
-                        }}
-                    >Delete</Button>
-                ) : (
-                    ""
-                )}
 
                 {loggedInUser.id === item.userProfile.id && item.isActive === true ? (
-                    <Button
-                        color="warning"
+                    <Button className="deactivateButton"
                         onClick={() => {
                             deactivateItem(item.id).then(() => {
                                 getAllItems()
@@ -64,7 +52,21 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 ) : (
                     ""
                 )}
-            </CardBody>
+
+                {loggedInUser.id === item.userProfile.id || loggedInUser.roles.includes("Admin") ? (
+                    <Button
+                        className="deleteButton"
+                        onClick={() => {
+                            deleteItem(item.id).then(() => {
+                                getAllItems()
+                            })
+                        }}
+                    >Delete</Button>
+                ) : (
+                    ""
+                )}
+            </CardFooter>
+
         </Card >
     );
 }

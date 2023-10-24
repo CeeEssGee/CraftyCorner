@@ -4,3 +4,92 @@ img {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.itemContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.itemCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardFooter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.itemCard {
+    min-height: 350px;
+    min-width: 350px;
+    max-height: 500px;
+    max-width: 430.8px;
+    margin: 10px;
+}
+
+.detailsButton,
+.myItems {
+    background: #01FDF6;
+    color: black;
+}
+
+button:hover,
+.detailsButton:hover,
+.myItems:hover {
+    background: #03FCBA;
+    color: black;
+}
+
+.deleteButton {
+    background: #FB5012;
+}
+
+button:hover,
+.deleteButton:hover {
+    background: darkred;
+}
+
+.createItem {
+    background: #03FCBA;
+    color: black;
+}
+
+.createItem:hover {
+    background: #03fcba9b;
+    color: black;
+}
+
+.deactivateButton,
+.myBorrowed {
+    background: #E9DF00;
+    color: black;
+}
+
+.myBorrowed:hover {
+    background: #e9dd009f;
+    color: black;
+}
+
+body {
+    background: #CBBAED;
+    color: black
+}
+
+/* body {
+    background-image: url("https://img.freepik.com/free-photo/white-wooden-texture-flooring-background_53876-63634.jpg?w=1380&t=st=1698178425~exp=1698179025~hmac=e4d2b374e8479bd79412cbe82e93d4bd028ac3d776402dcf082ee08e9f5d86be");
+} */
+
+header {
+    font-size: large;
+    font-weight: bold;
+}
+
+.craftersGonnaCraft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

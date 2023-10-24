@@ -33,13 +33,13 @@ export default function ItemList({ searchTermState, loggedInUser }) {
 
     return (
         <div className="container">
-            <div className="sub-menu bg-light">
-                <h2>Items</h2>
-                <Button
-                    color="success"
-                    onClick={toggle}>
-                    Create Item
-                </Button>
+            <h2>Items</h2>
+            <Button
+                className="createItem"
+                onClick={toggle}>
+                Create Item
+            </Button>
+            <div className="sub-menu bg-light itemContainer">
                 {filteredItems.map((item) => (
                     <ItemCard
                         item={item}

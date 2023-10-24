@@ -32,7 +32,7 @@ export const updateItem = (id, item) => {
     });
 };
 
-export const getItemByUserId = (userId) => {
+export const getItemsByUserId = (userId) => {
     return fetch(`${_apiURL}/${userId}/userId`)
         .then((res) => res.json());
 };

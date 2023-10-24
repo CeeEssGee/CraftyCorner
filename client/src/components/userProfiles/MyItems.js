@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getItemByUserId } from "../../managers/itemManager";
+import { getItemsByUserId } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
 
 export default function MyItems({ loggedInUser }) {
     const [items, setItems] = useState([]);
 
     const getAllItems = () => {
-        getItemByUserId(loggedInUser.id).then(setItems)
+        getItemsByUserId(loggedInUser.id).then(setItems)
     }
 
     useEffect(() => {
@@ -15,9 +15,9 @@ export default function MyItems({ loggedInUser }) {
 
 
     return (
-        <div className="container">
-            <div className="sub-menu bg-light">
-                <h2>Items</h2>
+        <div>
+            <h2>Items</h2>
+            <div className="sub-menu bg-light itemContainer">
 
                 {items.map((item) => (
                     <ItemCard
