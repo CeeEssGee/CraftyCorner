@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getItemById, updateItem } from "../../managers/itemManager";
 import { getCategories } from "../../managers/categoryManager";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { cloud_name, preset_key } from "../../_env";
+import "./Item.css"
 
 
 export const EditItem = () => {
@@ -21,6 +23,25 @@ export const EditItem = () => {
         categoryId: "",
         isActive: "true"
     })
+
+    // ***** Cloudinary code
+    const UploadWidget = (clickEvent) => {
+        clickEvent.preventDefault()
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: cloud_name,
+            uploadPreset: preset_key
+        },
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    console.log(result.info.url)
+
+                    setPictureUrl(result.info.url);
+
+                }
+            });
+        widget.open()
+    }
+    // ***** End Cloudinary code
 
     const { itemId } = useParams();
     const navigate = useNavigate();
@@ -79,16 +100,6 @@ export const EditItem = () => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label>Picture URL:</Label>
-                    <Input type="text" value={item.pictureUrl} className="item.pictureUrl"
-                        onChange={(e) => {
-                            const copy = { ...item }
-                            copy.pictureUrl = e.target.value
-                            setItem(copy)
-                        }} />
-                </FormGroup>
-
-                <FormGroup>
                     <Label>Category:</Label>
                     <Input type="select" value={item.categoryId} className="item.category"
                         onChange={(e) => {
@@ -102,6 +113,26 @@ export const EditItem = () => {
                                 key={`category--{c.id}`}>{c.name}</option>
                         })}
                     </Input>
+
+                    <FormGroup>
+                        <Label htmlFor="pictureId">Picture:</Label>
+                        <Button
+                            onClick={(clickEvent) => {
+                                UploadWidget(clickEvent)
+                            }}
+                        >Upload Picture</Button>
+                        <div className="imagePreview">
+                            {
+                                pictureUrl !== ""
+                                    ? <>
+                                        <div><img src={pictureUrl} ></img></div>
+
+                                    </>
+                                    : <>(Image will preview here)</>
+                            }
+                        </div>
+                    </FormGroup>
+
 
                 </FormGroup>
                 <Button

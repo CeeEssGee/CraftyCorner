@@ -4,6 +4,8 @@ import { deactivateItem, deleteItem, getItemById, getItems, reactivateItem } fro
 import { useNavigate, useParams } from "react-router-dom";
 import { getItemComments } from "../../managers/itemCommentManager";
 import { CreateCommentModal } from "./CreateCommentModal";
+import "./Item.css"
+
 
 
 export default function ItemDetails({ loggedInUser }) {
@@ -42,7 +44,6 @@ export default function ItemDetails({ loggedInUser }) {
                     <CardTitle tag="h4">{item?.manufacturer} {item?.name}</CardTitle>
                     <p>Owner: {item?.userProfile?.fullName}</p>
                     <p>{item?.category?.name}</p>
-                    <p>Is Active? {item?.isActive.toString()}</p>
                     <img src={item?.pictureUrl} alt={item?.name} />
                     <p>{item?.notes}</p>
                 </CardBody>

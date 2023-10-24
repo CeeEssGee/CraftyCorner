@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Input, Label, ModalBody } from "reactstrap";
 import { getCategories } from "../../managers/categoryManager";
 import { createItem } from "../../managers/itemManager";
+import { cloud_name, preset_key } from "../../_env";
+
 
 export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
     const [itemManufacturer, setItemManufacturer] = useState("");
@@ -12,6 +14,25 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
     const [error, setError] = useState(false);
     const [categories, setCategories] = useState([]);
     const [itemPictureUrl, setItemPictureUrl] = useState("");
+
+    // ***** Cloudinary code
+    const UploadWidget = (clickEvent) => {
+        clickEvent.preventDefault()
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: cloud_name,
+            uploadPreset: preset_key
+        },
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    console.log(result.info.url)
+
+                    setItemPictureUrl(result.info.url);
+
+                }
+            });
+        widget.open()
+    }
+    // ***** End Cloudinary code
 
     useEffect(() => {
         getCategories().then(setCategories)
@@ -98,13 +119,21 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
 
                     <FormGroup>
                         <Label htmlFor="itemPictureId">Picture:</Label>
-                        <Input
-                            type="text"
-                            name="pictureId"
-                            onChange={(e) => {
-                                setItemPictureUrl(e.target.value);
+                        <Button
+                            onClick={(clickEvent) => {
+                                UploadWidget(clickEvent)
                             }}
-                        ></Input>
+                        >Upload Picture</Button>
+                        <div className="imagePreview">
+                            {
+                                itemPictureUrl !== ""
+                                    ? <>
+                                        <div><img src={itemPictureUrl} ></img></div>
+
+                                    </>
+                                    : <>(Image will preview here)</>
+                            }
+                        </div>
                     </FormGroup>
 
                     <Button
