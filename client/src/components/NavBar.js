@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { logout } from "../managers/authManager";
 
+
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
 
@@ -54,7 +55,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
 
 
                         <Button
-                            color="primary"
+                            className="logoutButton"
                             onClick={(e) => {
                                 e.preventDefault();
                                 setOpen(false);
