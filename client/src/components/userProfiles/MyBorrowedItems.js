@@ -3,16 +3,12 @@ import { getUserProfileById } from "../../managers/userProfileManager";
 import { getItems } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
 import { filteredItemComments, getAllItemComments, getItemComments } from "../../managers/itemCommentManager";
-import { Button } from "reactstrap";
-import { useNavigate } from "react-router-dom";
 
 
-export const MyProfile = ({ loggedInUser }) => {
+export const MyBorrowedItems = ({ loggedInUser }) => {
     const [userProfile, setUserProfile] = useState();
     const [items, setItems] = useState([]);
     const [itemComments, setItemComments] = useState([]);
-
-    const navigate = useNavigate();
 
     const getAllItems = () => {
         getItems().then(setItems)
@@ -33,18 +29,16 @@ export const MyProfile = ({ loggedInUser }) => {
     return (
         <>
             <h3>My Profile</h3>
-
-            <Button
-                onClick={() => {
-                    navigate(`/profile/borrowed`)
-                }}
-            >My Borrowed Items</Button>
-
-            <Button
-                onClick={() => {
-                    navigate(`/profile/myItems`)
-                }}
-            >My Items</Button>
+            <h4>Items I Have Borrowed</h4>
+            {/* if the item has a comment from loggedInUser && the comment is a borrow request, then I want it to show */}
+            {itemComments.map((ic) => (
+                <ItemCard
+                    item={ic?.item}
+                    loggedInUser={loggedInUser}
+                    getAllItems={getAllItems}
+                    key={`item-${ic?.item.id}`}
+                ></ItemCard >
+            ))}
         </>
     )
 }

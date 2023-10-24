@@ -8,6 +8,8 @@ import { CategoryList } from "./categories/CategoryList";
 import ItemDetails from "./items/ItemDetails";
 import { EditItem } from "./items/EditItem";
 import { MyProfile } from "./userProfiles/MyProfile";
+import { MyBorrowedItems } from "./userProfiles/MyBorrowedItems";
+import MyItems from "./userProfiles/MyItems";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -64,6 +66,24 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MyProfile loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="profile/borrowed"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MyBorrowedItems loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="profile/myItems"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MyItems loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

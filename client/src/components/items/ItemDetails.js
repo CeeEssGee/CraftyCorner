@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, CardFooter, CardSubtitle, CardTitle, Modal, ModalHeader } from "reactstrap";
-import { deleteItem, getItemById, getItems } from "../../managers/itemManager";
+import { deactivateItem, deleteItem, getItemById, getItems, reactivateItem } from "../../managers/itemManager";
 import { useNavigate, useParams } from "react-router-dom";
 import { getItemComments } from "../../managers/itemCommentManager";
 import { CreateCommentModal } from "./CreateCommentModal";
@@ -42,6 +42,7 @@ export default function ItemDetails({ loggedInUser }) {
                     <CardTitle tag="h4">{item?.manufacturer} {item?.name}</CardTitle>
                     <p>Owner: {item?.userProfile?.fullName}</p>
                     <p>{item?.category?.name}</p>
+                    <p>Is Active? {item?.isActive.toString()}</p>
                     <img src={item?.pictureUrl} alt={item?.name} />
                     <p>{item?.notes}</p>
                 </CardBody>
@@ -70,6 +71,31 @@ export default function ItemDetails({ loggedInUser }) {
                     ) : (
                         ""
                     )}
+                    {loggedInUser.id === item?.userProfile.id && item.isActive === true ? (
+                        <Button
+                            color="warning"
+                            onClick={() => {
+                                deactivateItem(item.id).then(() => {
+                                    navigate(`/profile/myitems`)
+                                })
+                            }}
+                        >Deactivate</Button>
+                    ) : (
+                        ""
+                    )}
+
+                    {loggedInUser.id === item?.userProfile.id && item.isActive === false ? (
+                        <Button
+                            color="success"
+                            onClick={() => {
+                                reactivateItem(item.id).then(() => {
+                                    navigate(`/profile/myitems`)
+                                })
+                            }}
+                        >Reactivate</Button>
+                    ) : (
+                        ""
+                    )}
                 </CardFooter>
             </Card>
             <div className="comment-container">
@@ -90,7 +116,7 @@ export default function ItemDetails({ loggedInUser }) {
                 ))}
             </div>
             <Modal isOpen={commentModal} toggle={toggle}>
-                <ModalHeader toggle={commentModal}>Add Comment</ModalHeader>
+                <ModalHeader toggle={toggle}>Add Comment</ModalHeader>
                 <CreateCommentModal toggle={toggle} loggedInUser={loggedInUser} itemId={itemId} getComments={getComments} />
             </Modal>
 

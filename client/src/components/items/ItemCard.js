@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { deleteItem } from "../../managers/itemManager";
+import { deactivateItem, deleteItem, reactivateItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
 
 
@@ -34,6 +34,32 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                             })
                         }}
                     >Delete</Button>
+                ) : (
+                    ""
+                )}
+
+                {loggedInUser.id === item.userProfile.id && item.isActive === true ? (
+                    <Button
+                        color="warning"
+                        onClick={() => {
+                            deactivateItem(item.id).then(() => {
+                                getAllItems()
+                            })
+                        }}
+                    >Deactivate</Button>
+                ) : (
+                    ""
+                )}
+
+                {loggedInUser.id === item.userProfile.id && item.isActive === false ? (
+                    <Button
+                        color="success"
+                        onClick={() => {
+                            reactivateItem(item.id).then(() => {
+                                getAllItems()
+                            })
+                        }}
+                    >Reactivate</Button>
                 ) : (
                     ""
                 )}

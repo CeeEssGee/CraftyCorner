@@ -25,6 +25,20 @@ public class ItemController : ControllerBase
         .Include(i => i.UserProfile)
         .Include(i => i.Category)
         .OrderBy(i => i.Manufacturer)
+        .Where(i => i.isActive == true)
+        .ToList()
+        );
+    }
+
+    [HttpGet("{userId}/userId")]
+    // [Authorize]
+    public IActionResult GetItemsByUserId(int userId)
+    {
+        return Ok(_dbContext.Items
+        .Include(i => i.UserProfile)
+        .Include(i => i.Category)
+        .OrderBy(i => i.Manufacturer)
+        .Where(i => i.UserProfileId == userId)
         .ToList()
         );
     }
@@ -97,4 +111,45 @@ public class ItemController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+    [HttpPut("{id}/deactivate")]
+    // [Authorize]
+    public IActionResult DeactivateItem(int id)
+    {
+        Item itemToDeactivate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
+
+        if (itemToDeactivate == null)
+        {
+            return NotFound();
+        }
+        if (id != itemToDeactivate.Id)
+        {
+            return BadRequest();
+        }
+
+        itemToDeactivate.isActive = false;
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpPut("{id}/reactivate")]
+    // [Authorize]
+    public IActionResult ReactivateItem(int id)
+    {
+        Item itemToReactivate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
+
+        if (itemToReactivate == null)
+        {
+            return NotFound();
+        }
+        if (id != itemToReactivate.Id)
+        {
+            return BadRequest();
+        }
+
+        itemToReactivate.isActive = true;
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
 }
