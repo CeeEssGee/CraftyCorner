@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getItemComments } from "../../managers/itemCommentManager";
 import { CreateCommentModal } from "./CreateCommentModal";
 import "./Item.css"
+import ConfirmDeleteItemModal from "./ConfirmDeleteItemModal";
 
 
 
@@ -12,6 +13,7 @@ export default function ItemDetails({ loggedInUser }) {
     const [item, setItem] = useState(null);
     const [selectedItem, setSelectedItem] = useState();
     const [itemComments, setItemComments] = useState([]);
+    const [items, setItems] = useState([]);
 
     const [commentModal, setCommentModal] = useState(false);
 
@@ -26,6 +28,10 @@ export default function ItemDetails({ loggedInUser }) {
     const getItemDetails = (itemId) => {
         getItemById(itemId).then(setItem);
     };
+
+    const getAllItems = () => {
+        getItems().then(setItems)
+    }
 
     const getComments = (itemId) => {
         getItemComments(itemId).then(setItemComments);
@@ -61,14 +67,15 @@ export default function ItemDetails({ loggedInUser }) {
                     )}
 
                     {loggedInUser.id === item?.userProfile.id || loggedInUser.roles.includes("Admin") ? (
-                        <Button
-                            color="danger"
-                            onClick={() => {
-                                deleteItem(item.id).then(() => {
-                                    navigate(`/items`)
-                                })
-                            }}
-                        >Delete</Button>
+                        // <Button
+                        //     color="danger"
+                        //     onClick={() => {
+                        //         deleteItem(item.id).then(() => {
+                        //             navigate(`/items`)
+                        //         })
+                        //     }}
+                        // >Delete</Button>
+                        <ConfirmDeleteItemModal item={item} getAllItems={getAllItems} />
                     ) : (
                         ""
                     )}

@@ -2,6 +2,7 @@ import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText, CardTitle }
 import { deactivateItem, deleteItem, reactivateItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
 import "./Item.css"
+import ConfirmDeleteItemModal from "./ConfirmDeleteItemModal";
 
 
 export default function ItemCard({ item, loggedInUser, getAllItems }) {
@@ -54,14 +55,15 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 )}
 
                 {loggedInUser.id === item.userProfile.id || loggedInUser.roles.includes("Admin") ? (
-                    <Button
-                        className="deleteButton"
-                        onClick={() => {
-                            deleteItem(item.id).then(() => {
-                                getAllItems()
-                            })
-                        }}
-                    >Delete</Button>
+                    <ConfirmDeleteItemModal item={item} getAllItems={getAllItems} />
+                    // <Button
+                    //     className="deleteButton"
+                    //     onClick={() => {
+                    //         deleteItem(item.id).then(() => {
+                    //             getAllItems()
+                    //         })
+                    //     }}
+                    // >Delete</Button>
                 ) : (
                     ""
                 )}
