@@ -23,6 +23,12 @@ img {
     justify-content: space-between;
 }
 
+.cardFooterDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .itemCard {
     min-height: 350px;
     min-width: 350px;
@@ -53,12 +59,14 @@ button:hover,
     background: darkred;
 }
 
-.createItem {
+.createItem,
+.editButton {
     background: #03FCBA;
     color: black;
 }
 
-.createItem:hover {
+.createItem:hover,
+.editButton:hover {
     background: #03fcba9b;
     color: black;
 }
@@ -69,7 +77,8 @@ button:hover,
     color: black;
 }
 
-.myBorrowed:hover {
+.myBorrowed:hover,
+.deactivateButton:hover {
     background: #e9dd009f;
     color: black;
 }

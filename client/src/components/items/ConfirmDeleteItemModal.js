@@ -21,7 +21,7 @@ function ConfirmDeleteItemModal({ getAllItems, item }) {
 
     return (
         <div>
-            <Button color="danger" onClick={toggle}>
+            <Button className="deleteButton" onClick={toggle}>
                 Delete
             </Button>
             <Modal isOpen={modal} toggle={toggle}>

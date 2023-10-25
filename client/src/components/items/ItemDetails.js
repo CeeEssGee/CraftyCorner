@@ -54,14 +54,41 @@ export default function ItemDetails({ loggedInUser }) {
                     <p>{item?.notes}</p>
                 </CardBody>
 
-                <CardFooter>
+                <CardFooter className="cardFooterDetails">
                     {loggedInUser.id === item?.userProfile.id || loggedInUser.roles.includes("Admin") ? (
                         <Button
-                            color="warning"
+                            className="editButton"
                             onClick={() => {
                                 navigate("edit")
                             }}
                         >Edit</Button>
+                    ) : (
+                        ""
+                    )}
+
+
+                    {loggedInUser.id === item?.userProfile.id && item.isActive === true ? (
+                        <Button
+                            className="deactivateButton"
+                            onClick={() => {
+                                deactivateItem(item.id).then(() => {
+                                    navigate(`/profile/myitems`)
+                                })
+                            }}
+                        >Deactivate</Button>
+                    ) : (
+                        ""
+                    )}
+
+                    {loggedInUser.id === item?.userProfile.id && item.isActive === false ? (
+                        <Button
+                            color="reactivateButton"
+                            onClick={() => {
+                                reactivateItem(item.id).then(() => {
+                                    navigate(`/profile/myitems`)
+                                })
+                            }}
+                        >Reactivate</Button>
                     ) : (
                         ""
                     )}
@@ -76,31 +103,6 @@ export default function ItemDetails({ loggedInUser }) {
                         //     }}
                         // >Delete</Button>
                         <ConfirmDeleteItemModal item={item} getAllItems={getAllItems} />
-                    ) : (
-                        ""
-                    )}
-                    {loggedInUser.id === item?.userProfile.id && item.isActive === true ? (
-                        <Button
-                            color="warning"
-                            onClick={() => {
-                                deactivateItem(item.id).then(() => {
-                                    navigate(`/profile/myitems`)
-                                })
-                            }}
-                        >Deactivate</Button>
-                    ) : (
-                        ""
-                    )}
-
-                    {loggedInUser.id === item?.userProfile.id && item.isActive === false ? (
-                        <Button
-                            color="success"
-                            onClick={() => {
-                                reactivateItem(item.id).then(() => {
-                                    navigate(`/profile/myitems`)
-                                })
-                            }}
-                        >Reactivate</Button>
                     ) : (
                         ""
                     )}
