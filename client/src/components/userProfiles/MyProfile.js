@@ -23,26 +23,41 @@ export const MyProfile = ({ loggedInUser }) => {
 
     return (
         <>
-            <div className="profile">
-                <h2>My Profile</h2>
-                <h4>Name:   {userProfile?.fullName}</h4>
-                <h4>Address: {userProfile?.address}</h4>
-                <h4>Email Address: {userProfile?.email}</h4>
-            </div>
-            <div className="myProfileButtons">
-                <Button className="myItems"
-                    onClick={() => {
-                        navigate(`/profile/myItems`)
-                    }}
-                >My Items</Button>
+            <div className="profileContainer">
+                <div>
+                    <div className="profile">
+                        <h1>My Profile</h1>
+                        <h4>Name:   {userProfile?.fullName}</h4>
+                        <h4>Address: {userProfile?.address}</h4>
+                        <h4>Email Address: {userProfile?.email}</h4>
+                    </div>
+                </div>
+                <div>
 
-                <Button className="myBorrowed"
-                    onClick={() => {
-                        navigate(`/profile/borrowed`)
-                    }}
-                >My Borrowed Items</Button>
+                    <div className="myProfileButtons">
+
+                        <Button className="editProfile"
+                            onClick={() => {
+                                navigate(`/profile/editProfile`)
+                            }}
+                        >EditProfile</Button>
+
+                        <Button className="myItems"
+                            onClick={() => {
+                                navigate(`/profile/myItems`)
+                            }}
+                        >My Items</Button>
+
+                        <Button className="myBorrowed"
+                            onClick={() => {
+                                navigate(`/profile/borrowed`)
+                            }}
+                        >My Borrowed Items</Button>
+
+                    </div>
+                    <div className="craftersGonnaCraft"><img src="/images/CraftersGonnaCraft.jpg" alt="crafts" /></div>
+                </div>
             </div>
-            <div className="craftersGonnaCraft"><img src="/images/CraftersGonnaCraft.jpg" alt="crafts" /></div>
         </>
     )
 }

@@ -5,11 +5,58 @@
 }
 
 .profile {
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 50px;
 }
 
 .logoutButton {
     background: #03FCBA;
+    color: black;
+}
+
+.profileContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.editProfile,
+.myItems,
+.myBorrowed {
+    margin: 10px;
+}
+
+.editProfile {
+    background: #01FDF6;
+    color: black;
+}
+
+button:hover,
+.editProfile:hover {
+    background: #03FCBA;
+    color: black;
+}
+
+.myBorrowed {
+    background: #FB5012;
+}
+
+button:hover,
+.myBorrowed:hover {
+    background: darkred;
+}
+
+.myItems {
+    background: #E9DF00;
+    color: black;
+}
+
+.myItems:hover {
+    background: #e9dd009f;
     color: black;
 }

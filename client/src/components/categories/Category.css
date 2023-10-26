@@ -1,0 +1,36 @@
+.deleteButton {
+    background: #FB5012;
+}
+
+button:hover,
+.deleteButton:hover {
+    background: darkred;
+}
+
+.createCategory {
+    background: #01FDF6;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.createCategory:hover {
+    background: #03FCBA;
+    color: black;
+
+}
+
+.createCategory:hover {
+    background: #03fcba9b;
+    color: black;
+}
+
+.editButton {
+    background: #E9DF00;
+    color: black;
+}
+
+.editButton:hover {
+    background: #e9dd009f;
+    color: black;
+}
