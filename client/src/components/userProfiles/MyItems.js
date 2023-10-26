@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getItemsByUserId } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
+import { Spinner } from "reactstrap";
 
 export default function MyItems({ loggedInUser }) {
     const [items, setItems] = useState([]);
@@ -13,6 +14,9 @@ export default function MyItems({ loggedInUser }) {
         getAllItems()
     }, []);
 
+    if (items.length === 0) {
+        return <Spinner />
+    }
 
     return (
         <div>

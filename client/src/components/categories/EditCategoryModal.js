@@ -53,7 +53,7 @@ export const EditCategoryModal = ({ categoryObject, toggle, getAllCategories }) 
                         </InputGroup>
                     </FormGroup>
                     <Button
-                        color="success"
+                        className="editButton"
                         onClick={() => {
                             handleEdit();
                         }}>
@@ -61,7 +61,7 @@ export const EditCategoryModal = ({ categoryObject, toggle, getAllCategories }) 
                     </Button>
                     <Button
                         style={{ marginLeft: '10px' }}
-                        color="danger"
+                        className="deleteButton"
                         onClick={toggle}>
                         Cancel
                     </Button>

@@ -10,7 +10,7 @@ import { EditItem } from "./items/EditItem";
 import { MyProfile } from "./userProfiles/MyProfile";
 import { MyBorrowedItems } from "./userProfiles/MyBorrowedItems";
 import MyItems from "./userProfiles/MyItems";
-import { Home } from "./home/Home";
+import Home from "./home/Home";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 

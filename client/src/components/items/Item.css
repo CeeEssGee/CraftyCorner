@@ -9,12 +9,17 @@ img {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-color: #CBBAED;
+    color: #CBBAED;
 }
 
 .itemCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .cardFooter {
@@ -37,15 +42,13 @@ img {
     margin: 10px;
 }
 
-.detailsButton,
-.myItems {
+.detailsButton {
     background: #01FDF6;
     color: black;
 }
 
 button:hover,
-.detailsButton:hover,
-.myItems:hover {
+.detailsButton:hover {
     background: #03FCBA;
     color: black;
 }
@@ -60,24 +63,32 @@ button:hover,
 }
 
 .createItem,
-.editButton {
+.editButton,
+.addComment {
     background: #03FCBA;
     color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
+.itemsTitle {
+    margin-left: 10px;
+}
+
+
+
 .createItem:hover,
-.editButton:hover {
+.editButton:hover,
+.addComment:hover {
     background: #03fcba9b;
     color: black;
 }
 
-.deactivateButton,
-.myBorrowed {
+.deactivateButton {
     background: #E9DF00;
     color: black;
 }
 
-.myBorrowed:hover,
 .deactivateButton:hover {
     background: #e9dd009f;
     color: black;
@@ -101,4 +112,37 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.commentContainer {
+    margin-left: 20px;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.detailCard {
+    max-width: 400px;
+    margin-left: 20px;
+}
+
+.detailTitle {
+    margin-left: 20px;
+}
+
+.detailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.commentDiv {
+    border: 2px solid black;
+    margin: 5px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
 }

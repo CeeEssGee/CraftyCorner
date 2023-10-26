@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getItems } from "../../managers/itemManager";
 import ItemCard from "./ItemCard";
 import { CreateItemModal } from "./CreateItemModal";
-import { Button, Modal, ModalHeader } from "reactstrap";
+import { Button, Modal, ModalHeader, Spinner } from "reactstrap";
 import "./Item.css"
 
 
@@ -31,15 +31,19 @@ export default function ItemList({ searchTermState, loggedInUser }) {
         setCreateModal(!createModal)
     };
 
+    if (items.length === 0) {
+        return <Spinner />
+    }
+
     return (
-        <div className="container">
-            <h2>Items</h2>
+        <div className="otherContainer">
+            <h2 className="itemsTitle">Items</h2>
             <Button
                 className="createItem"
                 onClick={toggle}>
                 Create Item
             </Button>
-            <div className="sub-menu bg-light itemContainer">
+            <div className="sub-menu itemContainer">
                 {filteredItems.map((item) => (
                     <ItemCard
                         item={item}

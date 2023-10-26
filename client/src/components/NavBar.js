@@ -22,7 +22,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         <div>
             <Navbar color="light" light fixed="true" expand="lg">
                 <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-                    🎨 ✂ ✒ Crafty Corner
+                    Crafty Corner
                 </NavbarBrand>
                 {loggedInUser ? (
                     <>
@@ -36,12 +36,13 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                     </NavLink>
                                 </NavItem>
 
-
-                                <NavItem onClick={() => setOpen(false)}>
-                                    <NavLink tag={RRNavLink} to="/categories">
-                                        Categories
-                                    </NavLink>
-                                </NavItem>
+                                {loggedInUser.roles.includes("Admin") && (
+                                    <NavItem onClick={() => setOpen(false)}>
+                                        <NavLink tag={RRNavLink} to="/categories">
+                                            Categories
+                                        </NavLink>
+                                    </NavItem>
+                                )}
 
                                 <NavItem onClick={() => setOpen(false)}>
                                     <NavLink tag={RRNavLink} to="/profile">

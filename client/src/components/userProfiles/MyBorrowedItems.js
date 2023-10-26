@@ -3,6 +3,7 @@ import { getUserProfileById } from "../../managers/userProfileManager";
 import { getItems } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
 import { filteredItemComments, getAllItemComments, getItemComments } from "../../managers/itemCommentManager";
+import { Spinner } from "reactstrap";
 
 
 export const MyBorrowedItems = ({ loggedInUser }) => {
@@ -25,6 +26,9 @@ export const MyBorrowedItems = ({ loggedInUser }) => {
     }, [loggedInUser]);
 
 
+    if (itemComments.length === 0) {
+        return <Spinner />
+    }
 
     return (
         <>

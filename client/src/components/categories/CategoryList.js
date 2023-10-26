@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { getCategories, getCategoryById } from "../../managers/categoryManager";
-import { Button, Modal, ModalHeader, Table } from "reactstrap";
+import { Button, Modal, ModalHeader, Spinner, Table } from "reactstrap";
 import { DeleteCategoryModal } from "./DeleteCategoryModal";
 import { EditCategoryModal } from "./EditCategoryModal";
 import { CreateCategoryModal } from "./CreateCategoryModal";
+import "./Category.css"
+
 
 
 export const CategoryList = ({ loggedInUser }) => {
@@ -29,13 +31,17 @@ export const CategoryList = ({ loggedInUser }) => {
         getAllCategories();
     }, [])
 
+    if (categories.length === 0) {
+        return <Spinner />
+    }
+
     return (
         <div className="container">
-            <div className="sub-menu bg-light">
+            <div className="sub-menu">
                 <h4>Categories</h4>
                 {loggedInUser?.roles.includes("Admin") ? (
                     <Button
-                        color="success"
+                        className="createCategory"
                         onClick={toggle}>
                         Create Category
                     </Button>
@@ -48,7 +54,7 @@ export const CategoryList = ({ loggedInUser }) => {
                             <th>Name</th>
                             <th></th>
                             <th></th>
-                            <th></th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +65,7 @@ export const CategoryList = ({ loggedInUser }) => {
                                 <td>
                                     {loggedInUser?.roles.includes("Admin") ? (
                                         <Button
-                                            color="warning"
+                                            className="editButton"
                                             onClick={() => {
                                                 getCategoryById(c.id).then(setSelectedCategory).then(editToggle);
                                             }}
