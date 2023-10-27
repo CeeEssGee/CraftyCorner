@@ -43,7 +43,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
 
                 {loggedInUser.id === item.userProfile.id && item.isActive === false ? (
                     <Button
-                        color="success"
+                        className="reactivateButton"
                         onClick={() => {
                             reactivateItem(item.id).then(() => {
                                 getAllItems()

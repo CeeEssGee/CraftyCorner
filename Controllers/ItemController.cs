@@ -152,4 +152,22 @@ public class ItemController : ControllerBase
         return NoContent();
     }
 
+    [HttpGet("borrowed/{userId}")]
+    // [Authorize]
+    public IActionResult BorrowedItems(int userId)
+    {
+        List<Item> foundItems =
+        _dbContext.ItemComments
+        .Include(ic => ic.Item)
+        .ThenInclude(i => i.UserProfile)
+        .OrderBy(ic => ic.Date)
+        .Where(ic => ic.UserProfileId == userId && ic.BorrowRequest == true)
+        .Select(ic => ic.Item)
+        .Distinct()
+        .ToList();
+
+        return Ok(foundItems);
+
+    }
+
 }

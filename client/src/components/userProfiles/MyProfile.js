@@ -15,7 +15,6 @@ export const MyProfile = ({ loggedInUser }) => {
 
     useEffect(() => {
         getUserProfileById(parseInt(loggedInUser.id)).then(setUserProfile);
-        getItemComments()
         getItems()
     }, [loggedInUser]);
 
@@ -38,9 +37,9 @@ export const MyProfile = ({ loggedInUser }) => {
 
                         <Button className="editProfile"
                             onClick={() => {
-                                navigate(`/profile/editProfile`)
+                                navigate(`/profile/edit/${loggedInUser.id}`)
                             }}
-                        >EditProfile</Button>
+                        >Edit Profile</Button>
 
                         <Button className="myItems"
                             onClick={() => {

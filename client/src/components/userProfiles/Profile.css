@@ -26,27 +26,34 @@
 }
 
 .editProfile,
+#saveProfile,
 .myItems,
 .myBorrowed {
     margin: 10px;
 }
 
-.editProfile {
+.editProfile,
+#saveProfile,
+.createMyItem {
     background: #01FDF6;
     color: black;
 }
 
 button:hover,
-.editProfile:hover {
+.editProfile:hover,
+#saveProfile:hover,
+.createMyItem:hover {
     background: #03FCBA;
     color: black;
 }
 
-.myBorrowed {
+.myBorrowed,
+#cancelProfile {
     background: #FB5012;
 }
 
 button:hover,
+#cancelProfile:hover,
 .myBorrowed:hover {
     background: darkred;
 }
@@ -59,4 +66,17 @@ button:hover,
 .myItems:hover {
     background: #e9dd009f;
     color: black;
+}
+
+.profileItems,
+.createMyItem {
+    margin: 100px;
+}
+
+.borrowedTitle {
+    margin: 50px;
+}
+
+.editForm {
+    margin: 50px;
 }
