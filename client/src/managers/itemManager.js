@@ -50,3 +50,8 @@ export const reactivateItem = (id) => {
         headers: { "Content-Type": "application/json" },
     });
 };
+
+export const getBorrowedItems = (userId) => {
+    return fetch(`${_apiURL}/borrowed/${userId}`)
+        .then((res) => res.json());
+};

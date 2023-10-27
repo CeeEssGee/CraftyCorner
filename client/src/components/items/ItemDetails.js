@@ -63,7 +63,7 @@ export default function ItemDetails({ loggedInUser }) {
                         <CardFooter className="cardFooterDetails">
                             {loggedInUser.id === item?.userProfile.id || loggedInUser.roles.includes("Admin") ? (
                                 <Button
-                                    className="editButton"
+                                    id="editButton"
                                     onClick={() => {
                                         navigate("edit")
                                     }}
@@ -88,7 +88,7 @@ export default function ItemDetails({ loggedInUser }) {
 
                             {loggedInUser.id === item?.userProfile.id && item.isActive === false ? (
                                 <Button
-                                    color="reactivateButton"
+                                    className="reactivateButton"
                                     onClick={() => {
                                         reactivateItem(item.id).then(() => {
                                             navigate(`/profile/myitems`)

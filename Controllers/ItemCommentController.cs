@@ -58,20 +58,4 @@ public class ItemCommentController : ControllerBase
         return Created($"api/itemComment/{itemComment.Id}", itemComment);
     }
 
-    [HttpGet("filtered/{userId}")]
-    // [Authorize]
-    public IActionResult FilteredItemComments(int userId)
-    {
-        List<ItemComment> foundItemComments =
-        _dbContext.ItemComments
-        .Include(ic => ic.Item)
-        .ThenInclude(i => i.UserProfile)
-        .OrderBy(ic => ic.Date)
-        .Where(ic => ic.UserProfileId == userId && ic.BorrowRequest == true)
-        .ToList();
-
-        return Ok(foundItemComments);
-
-    }
-
 }

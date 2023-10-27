@@ -142,8 +142,10 @@ public class UserProfileController : ControllerBase
             // CreateDateTime = up.CreateDateTime,
             LastName = up.LastName,
             Email = up.IdentityUser.Email,
+            Address = up.Address,
             UserName = up.IdentityUser.UserName,
             IdentityUserId = up.IdentityUserId,
+            IdentityUser = up.IdentityUser,
             // ImageLocation = up.ImageLocation,
             // IsActive = up.IsActive,
             Roles = _dbContext.UserRoles
@@ -155,13 +157,15 @@ public class UserProfileController : ControllerBase
 
     [HttpPut("{id}")]
     // [Authorize(Roles = "Admin")]
-    public IActionResult EditUserProfile(UserProfile userProfile)
+    public IActionResult EditUserProfile(int id, UserProfile userProfile)
     {
-        UserProfile matching = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == userProfile.Id);
+        UserProfile matching = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
         matching.FirstName = userProfile.FirstName;
         matching.LastName = userProfile.LastName;
         matching.Email = userProfile.Email;
-        matching.UserName = userProfile.UserName;
+        // matching.IdentityUser = userProfile.IdentityUser;
+        matching.Address = userProfile.Address;
+        // matching.UserName = userProfile.UserName;
         _dbContext.SaveChanges();
         return NoContent();
     }

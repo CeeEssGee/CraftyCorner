@@ -64,6 +64,7 @@ button:hover,
 
 .createItem,
 .editButton,
+#editButton,
 .addComment {
     background: #03FCBA;
     color: black;
@@ -75,10 +76,17 @@ button:hover,
     margin-left: 10px;
 }
 
+.reactivateButton {
+    background: green;
+}
 
+.reactivateButton:hover {
+    background: darkgreen;
+}
 
 .createItem:hover,
 .editButton:hover,
+#editButton:hover,
 .addComment:hover {
     background: #03fcba9b;
     color: black;

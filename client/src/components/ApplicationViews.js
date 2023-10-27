@@ -11,6 +11,7 @@ import { MyProfile } from "./userProfiles/MyProfile";
 import { MyBorrowedItems } from "./userProfiles/MyBorrowedItems";
 import MyItems from "./userProfiles/MyItems";
 import Home from "./home/Home";
+import { EditProfile } from "./userProfiles/EditProfile";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -67,6 +68,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MyProfile loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="profile/edit/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditProfile loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

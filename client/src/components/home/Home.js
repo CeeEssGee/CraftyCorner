@@ -12,37 +12,37 @@ import "./Home.css"
 const items = [
     {
         src: '/images/Home.jpg',
-        // altText: 'Slide 1',
+        altText: 'Crafty Corner',
         // caption: 'Slide 1',
         key: 1,
     },
     {
         src: '/images/Capstonepic1.jpg',
-        // altText: 'Slide 2',
+        altText: 'card craft',
         // caption: 'Slide 2',
         key: 2,
     },
     {
         src: '/images/Capstonepic2.jpg',
-        // altText: 'Slide 3',
+        altText: 'afghan craft',
         // caption: 'Slide 3',
         key: 3,
     },
     {
         src: '/images/Capstonepic3.jpg',
-        // altText: 'Slide 3',
+        altText: 'card craft',
         // caption: 'Slide 3',
         key: 4,
     },
     {
         src: '/images/Capstonepic4.jpg',
-        // altText: 'Slide 3',
+        altText: 'card craft',
         // caption: 'Slide 3',
         key: 5,
     },
     {
         src: '/images/Capstonepic5.jpg',
-        // altText: 'Slide 3',
+        altText: 'card craft',
         // caption: 'Slide 3',
         key: 6,
     },

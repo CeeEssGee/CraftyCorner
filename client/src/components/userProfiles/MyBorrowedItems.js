@@ -1,45 +1,46 @@
 import { useEffect, useState } from "react";
 import { getUserProfileById } from "../../managers/userProfileManager";
-import { getItems } from "../../managers/itemManager";
+import { getBorrowedItems, getItems } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
 import { filteredItemComments, getAllItemComments, getItemComments } from "../../managers/itemCommentManager";
 import { Spinner } from "reactstrap";
+import "./Profile.css"
+
 
 
 export const MyBorrowedItems = ({ loggedInUser }) => {
     const [userProfile, setUserProfile] = useState();
     const [items, setItems] = useState([]);
-    const [itemComments, setItemComments] = useState([]);
 
     const getAllItems = () => {
         getItems().then(setItems)
     }
 
-    const getItemComments = () => {
-        filteredItemComments(loggedInUser.id).then(setItemComments)
+    const getBorrowed = () => {
+        getBorrowedItems(loggedInUser.id).then(setItems)
     }
 
     useEffect(() => {
         getUserProfileById(parseInt(loggedInUser.id)).then(setUserProfile);
-        getItemComments()
+        getBorrowed()
         getItems()
     }, [loggedInUser]);
 
 
-    if (itemComments.length === 0) {
-        return <Spinner />
+    if (items.length === 0) {
+        return <h3 className="profileItems">Ask to borrow some items!</h3>
     }
 
     return (
         <>
-            <h4>Items I Have Borrowed</h4>
+            <h4 className="borrowedTitle">Items I Have Borrowed</h4>
             <div className="itemContainer">
-                {itemComments.map((ic) => (
+                {items.map((item) => (
                     <ItemCard
-                        item={ic?.item}
+                        item={item}
                         loggedInUser={loggedInUser}
                         getAllItems={getAllItems}
-                        key={`item-${ic?.item.id}`}
+                        key={`item-${item.id}`}
                     ></ItemCard >
                 ))}
             </div>
