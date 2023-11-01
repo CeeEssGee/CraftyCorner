@@ -1,4 +1,5 @@
-.myProfileButtons {
+.myProfileButtons,
+.myCommunityButtons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -11,11 +12,6 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 50px;
-}
-
-.logoutButton {
-    background: #03FCBA;
-    color: black;
 }
 
 .profileContainer {
@@ -34,12 +30,14 @@
 
 .editProfile,
 #saveProfile,
+.myRSVPs,
 .createMyItem {
     background: #01FDF6;
     color: black;
 }
 
 button:hover,
+.myRSVPs:hover,
 .editProfile:hover,
 #saveProfile:hover,
 .createMyItem:hover {
@@ -48,11 +46,13 @@ button:hover,
 }
 
 .myBorrowed,
+.myEvents,
 #cancelProfile {
     background: #FB5012;
 }
 
 button:hover,
+.myEvents:hover,
 #cancelProfile:hover,
 .myBorrowed:hover {
     background: darkred;

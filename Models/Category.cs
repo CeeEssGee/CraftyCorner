@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using CraftyCorner.Models;
 
+namespace CraftyCorner.Models;
 public class Category
 {
     public int Id { get; set; }

@@ -36,6 +36,12 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                     </NavLink>
                                 </NavItem>
 
+                                <NavItem onClick={() => setOpen(false)}>
+                                    <NavLink tag={RRNavLink} to="/community">
+                                        Community
+                                    </NavLink>
+                                </NavItem>
+
                                 {loggedInUser.roles.includes("Admin") && (
                                     <NavItem onClick={() => setOpen(false)}>
                                         <NavLink tag={RRNavLink} to="/categories">

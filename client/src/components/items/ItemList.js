@@ -32,7 +32,16 @@ export default function ItemList({ searchTermState, loggedInUser }) {
     };
 
     if (items.length === 0) {
-        return <Spinner />
+        return (
+            <>
+                <p>Create an item!</p>
+                <Button
+                    className="createItem"
+                    onClick={toggle}>
+                    Create Item
+                </Button>
+            </>
+        )
     }
 
     return (

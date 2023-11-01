@@ -1,0 +1,113 @@
+.detailEventCard {
+    max-width: 600px;
+    margin-left: 20px;
+}
+
+.eventContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.eventCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cardFooter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cardFooterDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.eventCard {
+    min-height: 350px;
+    min-width: 350px;
+    max-height: 500px;
+    max-width: 430.8px;
+    margin: 10px;
+}
+
+.rsvpContainer {
+    margin-left: 20px;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.eventDetailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.rsvpDiv {
+    border: 2px solid black;
+    margin: 5px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.greenButton {
+    background: #03FCBA;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.greenButton:hover {
+    background: #03fcba9b;
+    color: black;
+}
+
+.blueButton {
+    background: #01FDF6;
+    color: black;
+}
+
+button:hover,
+.blueButton:hover {
+    background: #03FCBA;
+    color: black;
+}
+
+.deleteButton {
+    background: #FB5012;
+}
+
+button:hover,
+.deleteButton:hover {
+    background: darkred;
+}
+
+.darkGreenButton {
+    background: green;
+}
+
+.darkGreenButton:hover {
+    background: darkgreen;
+}
+
+.yellowButton {
+    background: #E9DF00;
+    color: black;
+}
+
+.yellowButton:hover {
+    background: #e9dd009f;
+    color: black;
+}

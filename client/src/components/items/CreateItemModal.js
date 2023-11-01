@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Form, FormGroup, Input, Label, ModalBody } from "reactstrap";
+import { Button, Form, FormFeedback, FormGroup, Input, Label, ModalBody } from "reactstrap";
 import { getCategories } from "../../managers/categoryManager";
 import { createItem } from "../../managers/itemManager";
 import { cloud_name, preset_key } from "../../_env";
@@ -49,7 +49,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
             userProfileId: loggedInUser.id
         }
 
-        if (!itemManufacturer || !itemName || !itemCategory) {
+        if (!itemManufacturer || !itemName || !itemCategory || !itemNotes) {
             setError(true);
         }
         else {
@@ -71,10 +71,20 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                         <Input
                             type="text"
                             name="itemManufacturer"
+                            invalid={error}
                             onChange={(e) => {
                                 setItemManufacturer(e.target.value);
                             }}
                         />
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Manufacturer cannot be blank. Use "Unknown" if necessary.
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
 
                     <FormGroup>
@@ -82,10 +92,20 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                         <Input
                             type="text"
                             name="itemName"
+                            invalid={error}
                             onChange={(e) => {
                                 setItemName(e.target.value);
                             }}
                         />
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Item name cannot be blank.
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
 
                     <FormGroup>
@@ -93,10 +113,20 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                         <Input
                             type="textarea"
                             name="text"
+                            invalid={error}
                             onChange={(e) => {
                                 setItemNotes(e.target.value);
                             }}
                         />
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Item notes cannot be blank.
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
 
                     <FormGroup>
@@ -104,6 +134,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                         <Input
                             type="select"
                             name="select"
+                            invalid={error}
                             onChange={(e) => {
                                 setItemCategory(parseInt(e.target.value));
                             }}
@@ -115,6 +146,15 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                                 </option>
                             ))}
                         </Input>
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Choose a category from the list.
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
 
                     <FormGroup>

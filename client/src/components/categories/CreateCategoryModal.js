@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, FormGroup, Input, Label, ModalBody } from "reactstrap";
+import { Button, Form, FormFeedback, FormGroup, Input, Label, ModalBody } from "reactstrap";
 import { createCategory } from "../../managers/categoryManager";
 
 export const CreateCategoryModal = ({ toggle, getAllCategories }) => {
@@ -33,10 +33,20 @@ export const CreateCategoryModal = ({ toggle, getAllCategories }) => {
                         <Input
                             type="text"
                             name="categoryName"
+                            invalid={error}
                             onChange={(e) => {
                                 setCategoryName(e.target.value);
                             }}
                         />
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Category Name cannot be blank
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
                     <Button
                         className="createCategory"

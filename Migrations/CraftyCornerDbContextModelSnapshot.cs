@@ -22,7 +22,7 @@ namespace CraftyCorner.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Category", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,7 +101,7 @@ namespace CraftyCorner.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CraftyCorner.Models.UserProfile", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,68 +113,56 @@ namespace CraftyCorner.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("IdentityUserId")
+                    b.Property<decimal?>("Cost")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Duration")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TotalSeats")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityUserId");
+                    b.HasIndex("UserProfileId");
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("Events");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Address = "101 Main Street",
-                            FirstName = "Admina",
-                            IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-                            LastName = "Strator"
-                        },
-                        new
-                        {
-                            Id = 2,
                             Address = "555 Ocean Avenue",
-                            FirstName = "Courtney",
-                            IdentityUserId = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
-                            LastName = "Gulledge"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "555 Jackson Street",
-                            FirstName = "Joy",
-                            IdentityUserId = "d9b5145a-739c-42d3-9e94-d2d439063d7e",
-                            LastName = "Forbess"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Address = "555 Middleburg Drive",
-                            FirstName = "Shiree",
-                            IdentityUserId = "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5",
-                            LastName = "Bridges"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Address = "555 Palm Court",
-                            FirstName = "Gail",
-                            IdentityUserId = "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c",
-                            LastName = "Fogarty"
+                            Body = "Come over and make a poinsettia wreath. I'll have snacks and light refreshments. If you have a glue gun and/or scissors, please bring them. We'll be following this tutorial: https://theshabbytree.com/diy-mesh-ribbon-poinsettia-wreath/",
+                            Cost = 15.00m,
+                            DateTime = new DateTime(2023, 11, 11, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = "1-2 hours",
+                            Name = "Wreath Making Class",
+                            PictureUrl = "https://theshabbytree.com/wp-content/uploads/2020/10/122895358_1122291638168766_5385533421705642737_n-980x735.jpg",
+                            TotalSeats = 3,
+                            UserProfileId = 2
                         });
                 });
 
-            modelBuilder.Entity("Item", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -262,7 +250,7 @@ namespace CraftyCorner.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ItemComment", b =>
+            modelBuilder.Entity("CraftyCorner.Models.ItemComment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -282,6 +270,9 @@ namespace CraftyCorner.Migrations
 
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("text");
 
                     b.Property<int>("UserProfileId")
                         .HasColumnType("integer");
@@ -324,6 +315,126 @@ namespace CraftyCorner.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CraftyCorner.Models.Rsvp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("RsvpNote")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("Rsvps");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EventId = 1,
+                            RsvpNote = "Looking forward to it, and I'll bring artichoke dip and crackers.",
+                            UserProfileId = 4
+                        });
+                });
+
+            modelBuilder.Entity("CraftyCorner.Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("IdentityUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("UserProfiles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "101 Main Street",
+                            FirstName = "Admina",
+                            IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
+                            IsActive = true,
+                            LastName = "Strator"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "555 Ocean Avenue",
+                            FirstName = "Courtney",
+                            IdentityUserId = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
+                            IsActive = true,
+                            LastName = "Gulledge"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "555 Jackson Street",
+                            FirstName = "Joy",
+                            IdentityUserId = "d9b5145a-739c-42d3-9e94-d2d439063d7e",
+                            IsActive = true,
+                            LastName = "Forbess"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "555 Middleburg Drive",
+                            FirstName = "Shiree",
+                            IdentityUserId = "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5",
+                            IsActive = true,
+                            LastName = "Bridges"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "555 Palm Court",
+                            FirstName = "Gail",
+                            IdentityUserId = "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c",
+                            IsActive = true,
+                            LastName = "Fogarty"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -353,14 +464,14 @@ namespace CraftyCorner.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "7401e087-07f3-4307-bb13-8236a56e1bc8",
+                            ConcurrencyStamp = "f916b8cc-cc7d-437a-bcb4-202f8e4c6b05",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
-                            ConcurrencyStamp = "43796b38-72ee-4764-869c-999a7868ef73",
+                            ConcurrencyStamp = "e7ee5e99-f31f-4066-b400-73272c6fb5c5",
                             Name = "Courtney",
                             NormalizedName = "courtney"
                         });
@@ -459,13 +570,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d08f9ea5-23b8-4ee9-91ba-5de59731874f",
+                            ConcurrencyStamp = "6376a400-a24b-48e8-83de-c05d7ad87e1f",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEJlAxgXDrLplob1dtOj3/wrxV+ho9ug/mYOIE3/jTBYdBHOAyIVSnCLMhzl/+8yjng==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAz1MDJGlZ+7jQsGb48FPxGe4qfPfLw6KzFiuTLn2lr9Qqiv1OOxW+RTBy0T1oNO6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1713bf1c-7e40-4b1c-8fc8-a222ac23c353",
+                            SecurityStamp = "8cbe8127-04d2-4939-a231-f21eec4b2af7",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -473,13 +584,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "f2498ab4-e4b6-4e61-92c0-9568e96a8145",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8e0c4d3-0f5f-4a67-9256-d4467d5e6c21",
+                            ConcurrencyStamp = "0830aa00-dd46-4089-9863-2cb3030f57b7",
                             Email = "courtney@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEASgVJuU12PaLDX65ibkVLRU6ay8Ijc7iHoPBpFfOxCZpkxe/a9SuoefrmiBcgdXbA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFsfszk6/deqR4OEgE+NHH4GoCJsE2FAkeLkft2XLcXGbjk+Z4j0cBy69XcxqaLB/Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9ed967f6-4d36-4849-90e9-1a791bf38607",
+                            SecurityStamp = "4256228a-431e-46c8-b8ae-b822d3586474",
                             TwoFactorEnabled = false,
                             UserName = "Courtney"
                         },
@@ -487,13 +598,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "d9b5145a-739c-42d3-9e94-d2d439063d7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd737be1-46be-4bf7-82fb-624b8e73ed68",
+                            ConcurrencyStamp = "b38fba5f-1af8-42d8-98e3-7e79af845523",
                             Email = "joy@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEEiorLNa6NAk19R/IDszHyVyPkcs2rQgIAMWH8IF12q3AE47tl2N/sX7N2Wz7RZy2w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELEf4Hs0DaWWUbjP+xyMHXWjnQKos4bJ+LhtAoWnW5e4EkhCoghP0pJs2JIwSwnBcw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b189483e-8103-4f58-b952-9b5ca8fc6c98",
+                            SecurityStamp = "f625aea2-d7a2-4da1-835d-91a9d3e06e09",
                             TwoFactorEnabled = false,
                             UserName = "Joy"
                         },
@@ -501,13 +612,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "a7bc4dd9-8f10-4e24-8c0c-ef09a24ec9a5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1472d487-7f89-48f0-b657-0ab834f3c991",
+                            ConcurrencyStamp = "f101e6ff-1660-4ef0-88a0-febea92c2a65",
                             Email = "shiree@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEKVlJkrYeFjk3E0DcC2VbhSjTyX/hCrAGELJto5Z37bnX4rXeLsQ1BBDUqOi9AqJRw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEACvu6/GU2xzvabnByERjB8ng/PNaE8TTPuuZbhfQYUbbHDJ1igFs+31s+MfADYvkg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b97f33a-b3ab-48de-8d6f-d24ba4337873",
+                            SecurityStamp = "b0ed4bcf-3039-4c9c-9588-9994717a1904",
                             TwoFactorEnabled = false,
                             UserName = "Shiree"
                         },
@@ -515,13 +626,13 @@ namespace CraftyCorner.Migrations
                         {
                             Id = "6a2f5d0b-3eac-4dab-ae9d-7f26d77e4a8c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b37a3c7-a779-4f52-864b-7e0371c0eaa5",
+                            ConcurrencyStamp = "b184b6b1-5709-4b79-be9b-defdee4a0b3c",
                             Email = "gail@gmail.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEGUuMSqggRtxolibhqOzLhlOxq/3rV7YZgdhgtYErkuXPjPGg79MHErZau960VJQNw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBRrfGK6wRkCHDtTY2dE4GoAveX/qSq5IF64jpM5ZMhWittRJ0VcqMsl8XoIKSQjqw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce8db05a-1100-4a0d-a8e7-e66c2a01b41d",
+                            SecurityStamp = "163e0c5f-5e70-4786-8711-983d1fd76d2f",
                             TwoFactorEnabled = false,
                             UserName = "Gail"
                         });
@@ -615,20 +726,20 @@ namespace CraftyCorner.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CraftyCorner.Models.UserProfile", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Event", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                    b.HasOne("CraftyCorner.Models.UserProfile", "UserProfile")
                         .WithMany()
-                        .HasForeignKey("IdentityUserId")
+                        .HasForeignKey("UserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("IdentityUser");
+                    b.Navigation("UserProfile");
                 });
 
-            modelBuilder.Entity("Item", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Item", b =>
                 {
-                    b.HasOne("Category", "Category")
+                    b.HasOne("CraftyCorner.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -645,9 +756,9 @@ namespace CraftyCorner.Migrations
                     b.Navigation("UserProfile");
                 });
 
-            modelBuilder.Entity("ItemComment", b =>
+            modelBuilder.Entity("CraftyCorner.Models.ItemComment", b =>
                 {
-                    b.HasOne("Item", "Item")
+                    b.HasOne("CraftyCorner.Models.Item", "Item")
                         .WithMany("ItemComments")
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -662,6 +773,36 @@ namespace CraftyCorner.Migrations
                     b.Navigation("Item");
 
                     b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("CraftyCorner.Models.Rsvp", b =>
+                {
+                    b.HasOne("CraftyCorner.Models.Event", "Event")
+                        .WithMany("Rsvps")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CraftyCorner.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("CraftyCorner.Models.UserProfile", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -715,7 +856,12 @@ namespace CraftyCorner.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Item", b =>
+            modelBuilder.Entity("CraftyCorner.Models.Event", b =>
+                {
+                    b.Navigation("Rsvps");
+                });
+
+            modelBuilder.Entity("CraftyCorner.Models.Item", b =>
                 {
                     b.Navigation("ItemComments");
                 });
