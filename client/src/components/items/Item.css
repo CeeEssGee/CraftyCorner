@@ -62,7 +62,7 @@ button:hover,
     background: darkred;
 }
 
-.createItem,
+.greenButton,
 .editButton,
 #editButton,
 .addComment {
@@ -84,7 +84,7 @@ button:hover,
     background: darkgreen;
 }
 
-.createItem:hover,
+.greenButton:hover,
 .editButton:hover,
 #editButton:hover,
 .addComment:hover {

@@ -160,9 +160,12 @@ public class UserProfileController : ControllerBase
     public IActionResult EditUserProfile(int id, UserProfile userProfile)
     {
         UserProfile matching = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
+
+        var idUser = _dbContext.Users.Single(u => u.Id == matching.IdentityUserId);
+
         matching.FirstName = userProfile.FirstName;
         matching.LastName = userProfile.LastName;
-        matching.Email = userProfile.Email;
+        idUser.Email = userProfile.Email;
         // matching.IdentityUser = userProfile.IdentityUser;
         matching.Address = userProfile.Address;
         // matching.UserName = userProfile.UserName;

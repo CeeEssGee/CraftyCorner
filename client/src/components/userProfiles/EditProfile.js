@@ -91,16 +91,16 @@ export const EditProfile = () => {
                         }} />
                 </FormGroup>
 
-                {/* <FormGroup>
-                    <Label>Email Address: (Unable to change) </Label>
-                    <Input type="text" disabled="disabled" value={user.email} className="user.email" style={{ width: 350 }}
-                    onChange={(e) => {
-                        const copy = { ...user }
-                        copy.email = e.target.value
-                        setUser(copy)
-                    }} 
+                <FormGroup>
+                    <Label>Email Address: </Label>
+                    <Input type="text" value={user.email} className="user.email" style={{ width: 350 }}
+                        onChange={(e) => {
+                            const copy = { ...user }
+                            copy.email = e.target.value
+                            setUser(copy)
+                        }}
                     />
-                </FormGroup> */}
+                </FormGroup>
                 <Button id="saveProfile" onClick={(e) => handleSave(e)}>Save Changes</Button>
 
                 <Button id="cancelProfile" onClick={(e) => cancel(e)}>Cancel</Button>

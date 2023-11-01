@@ -55,6 +55,18 @@ export const MyProfile = ({ loggedInUser }) => {
 
                     </div>
                     <div className="craftersGonnaCraft"><img src="/images/CraftersGonnaCraft.jpg" alt="crafts" /></div>
+                    <div className="myCommunityButtons">
+                        <Button className="myEvents"
+                            onClick={() => {
+                                navigate(`/profile/myEvents`)
+                            }}
+                        >My Events</Button>
+                        <Button className="myRSVPs"
+                            onClick={() => {
+                                navigate(`/profile/myRsvps`)
+                            }}
+                        >My RSVPs</Button>
+                    </div>
                 </div>
             </div>
         </>

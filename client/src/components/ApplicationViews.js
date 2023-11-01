@@ -12,6 +12,11 @@ import { MyBorrowedItems } from "./userProfiles/MyBorrowedItems";
 import MyItems from "./userProfiles/MyItems";
 import Home from "./home/Home";
 import { EditProfile } from "./userProfiles/EditProfile";
+import { EventList } from "./events/EventList";
+import EventDetails from "./events/EventDetails";
+import { EditEvent } from "./events/EditEvent";
+import { MyEvents } from "./userProfiles/MyEvents";
+import { MyRsvps } from "./userProfiles/MyRsvps";
 // import { CategoryCreate } from "./categories/CategoryCreate";
 
 
@@ -47,6 +52,33 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <EditItem loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="community"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EventList loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="community/:eventId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EventDetails loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="community/:eventId/edit"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditEvent loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
@@ -95,6 +127,24 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MyItems loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="profile/myEvents"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MyEvents loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="profile/myRsvps"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <MyRsvps loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

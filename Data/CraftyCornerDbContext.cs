@@ -12,6 +12,9 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Category> Categories { get; set; }
     public DbSet<Item> Items { get; set; }
     public DbSet<ItemComment> ItemComments { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<Rsvp> Rsvps { get; set; }
+
     public CraftyCornerDbContext(DbContextOptions<CraftyCornerDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
@@ -98,6 +101,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Admina",
             LastName = "Strator",
             Address = "101 Main Street",
+            IsActive = true,
         },
         new()
         {
@@ -106,6 +110,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Courtney",
             LastName = "Gulledge",
             Address = "555 Ocean Avenue",
+            IsActive = true,
         },
         new()
         {
@@ -114,6 +119,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Joy",
             LastName = "Forbess",
             Address = "555 Jackson Street",
+            IsActive = true,
         },
         new()
         {
@@ -122,6 +128,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Shiree",
             LastName = "Bridges",
             Address = "555 Middleburg Drive",
+            IsActive = true,
         },
         new()
         {
@@ -130,6 +137,7 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Gail",
             LastName = "Fogarty",
             Address = "555 Palm Court",
+            IsActive = true,
         }
 
         }
@@ -230,6 +238,36 @@ public class CraftyCornerDbContext : IdentityDbContext<IdentityUser>
                 Body = "I scheduled a play date with Gail, and we had a blast. Made some super cute crafts with the Maker 3 and made a new crafty friend. She's got an amazing setup.",
                 BorrowRequest = false
             },
+        }
+        );
+
+        modelBuilder.Entity<Event>().HasData(new Event[]
+        {
+            new Event
+            {
+                Id = 1,
+                Name = "Wreath Making Class",
+                UserProfileId = 2,
+                DateTime = new DateTime(2023, 11, 11, 14, 00, 00),
+                Duration = "1-2 hours",
+                Cost = 15.00M,
+                Address = "555 Ocean Avenue",
+                Body = "Come over and make a poinsettia wreath. I'll have snacks and light refreshments. If you have a glue gun and/or scissors, please bring them. We'll be following this tutorial: https://theshabbytree.com/diy-mesh-ribbon-poinsettia-wreath/",
+                PictureUrl = "https://theshabbytree.com/wp-content/uploads/2020/10/122895358_1122291638168766_5385533421705642737_n-980x735.jpg",
+                TotalSeats = 3,
+            }
+        }
+        );
+
+        modelBuilder.Entity<Rsvp>().HasData(new Rsvp[]
+        {
+            new Rsvp
+            {
+                Id = 1,
+                EventId = 1,
+                UserProfileId = 4,
+                RsvpNote = "Looking forward to it, and I'll bring artichoke dip and crackers."
+            }
         }
         );
     }

@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CraftyCorner.Models;
 
+namespace CraftyCorner.Models;
+
 public class Item
 {
     public int Id { get; set; }

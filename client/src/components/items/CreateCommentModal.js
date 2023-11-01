@@ -1,7 +1,7 @@
-import { useEffect, useState, useSyncExternalStore } from "react"
+import { useEffect, useState } from "react"
 import { createItemComment, getItemComments } from "../../managers/itemCommentManager";
 import { getItemById } from "../../managers/itemManager";
-import { Button, Form, FormGroup, Input, Label, ModalBody } from "reactstrap";
+import { Button, Form, FormFeedback, FormGroup, Input, Label, ModalBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
 
@@ -51,10 +51,20 @@ export const CreateCommentModal = ({ loggedInUser, itemId, toggle, getComments }
                         <Input
                             type="textarea"
                             name="text"
+                            invalid={error}
                             onChange={(e) => {
                                 setCommentBody(e.target.value);
                             }}
                         />
+                        {
+                            error
+                                ?
+                                <FormFeedback>
+                                    Body of comment cannot be blank.
+                                </FormFeedback>
+                                :
+                                ""
+                        }
                     </FormGroup>
 
                     <Button
