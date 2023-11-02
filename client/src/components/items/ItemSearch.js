@@ -7,7 +7,7 @@ export const ItemSearch = ({ setterFunction }) => {
                 onChange={(e) => {
                     setterFunction(e.target.value)
                 }}
-                type="text" placeholder="Enter search terms" />
+                type="text" placeholder="Enter search terms" className="searchBox" />
         </div>
     )
 }

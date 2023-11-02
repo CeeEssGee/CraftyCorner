@@ -19,7 +19,7 @@ export default function EventCard({ event, loggedInUser, getAllEvents }) {
                 </div>
             </CardBody>
             <CardFooter className="cardFooter">
-                <Button className="detailsButton"
+                <Button className="blueButton"
                     onClick={() => {
                         navigate(`/community/${event.id}`)
                     }}

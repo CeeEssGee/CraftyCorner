@@ -49,7 +49,7 @@ export const CreateCategoryModal = ({ toggle, getAllCategories }) => {
                         }
                     </FormGroup>
                     <Button
-                        className="createCategory"
+                        className="blueButton"
                         onClick={() => {
                             handleCreate();
                         }}>

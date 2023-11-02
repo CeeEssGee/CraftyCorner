@@ -42,74 +42,14 @@ img {
     margin: 10px;
 }
 
-.detailsButton {
-    background: #01FDF6;
-    color: black;
-}
-
-button:hover,
-.detailsButton:hover {
-    background: #03FCBA;
-    color: black;
-}
-
-.deleteButton {
-    background: #FB5012;
-}
-
-button:hover,
-.deleteButton:hover {
-    background: darkred;
-}
-
-.greenButton,
-.editButton,
-#editButton,
-.addComment {
-    background: #03FCBA;
-    color: black;
-    margin-bottom: 10px;
-    margin-left: 10px;
-}
-
 .itemsTitle {
     margin-left: 10px;
-}
-
-.reactivateButton {
-    background: green;
-}
-
-.reactivateButton:hover {
-    background: darkgreen;
-}
-
-.greenButton:hover,
-.editButton:hover,
-#editButton:hover,
-.addComment:hover {
-    background: #03fcba9b;
-    color: black;
-}
-
-.deactivateButton {
-    background: #E9DF00;
-    color: black;
-}
-
-.deactivateButton:hover {
-    background: #e9dd009f;
-    color: black;
 }
 
 body {
     background: #CBBAED;
     color: black
 }
-
-/* body {
-    background-image: url("https://img.freepik.com/free-photo/white-wooden-texture-flooring-background_53876-63634.jpg?w=1380&t=st=1698178425~exp=1698179025~hmac=e4d2b374e8479bd79412cbe82e93d4bd028ac3d776402dcf082ee08e9f5d86be");
-} */
 
 header {
     font-size: large;
@@ -120,6 +60,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.searchBox {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .commentContainer {
@@ -153,4 +101,61 @@ header {
     background-color: white;
     padding: 5px;
     border-radius: 5px;
+}
+
+/* Buttons */
+.blueButton {
+    background: #01FDF6;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.blueButton:hover {
+    background: #03FCBA;
+    color: black;
+}
+
+.redButton {
+    background: #FB5012;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.redButton:hover {
+    background: darkred;
+}
+
+.greenButton {
+    background: #03FCBA;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.darkGreenButton {
+    background: green;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.darkGreenButton:hover {
+    background: darkgreen;
+}
+
+.greenButton:hover {
+    background: #03fcba9b;
+    color: black;
+}
+
+.yellowButton {
+    background: #E9DF00;
+    color: black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.yellowButton:hover {
+    background: #e9dd009f;
+    color: black;
 }

@@ -35,19 +35,19 @@ export const MyProfile = ({ loggedInUser }) => {
 
                     <div className="myProfileButtons">
 
-                        <Button className="editProfile"
+                        <Button className="blueButton"
                             onClick={() => {
                                 navigate(`/profile/edit/${loggedInUser.id}`)
                             }}
                         >Edit Profile</Button>
 
-                        <Button className="myItems"
+                        <Button className="yellowButton"
                             onClick={() => {
                                 navigate(`/profile/myItems`)
                             }}
                         >My Items</Button>
 
-                        <Button className="myBorrowed"
+                        <Button className="redButton"
                             onClick={() => {
                                 navigate(`/profile/borrowed`)
                             }}
@@ -56,12 +56,12 @@ export const MyProfile = ({ loggedInUser }) => {
                     </div>
                     <div className="craftersGonnaCraft"><img src="/images/CraftersGonnaCraft.jpg" alt="crafts" /></div>
                     <div className="myCommunityButtons">
-                        <Button className="myEvents"
+                        <Button className="redButton"
                             onClick={() => {
                                 navigate(`/profile/myEvents`)
                             }}
                         >My Events</Button>
-                        <Button className="myRSVPs"
+                        <Button className="blueButton"
                             onClick={() => {
                                 navigate(`/profile/myRsvps`)
                             }}

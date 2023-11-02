@@ -29,8 +29,8 @@ function ConfirmDeleteEventModal({ getAllEvents, event }) {
                 <ModalHeader>Confirm Delete</ModalHeader>
                 <ModalBody>Are you sure you want to delete this event?</ModalBody>
                 <ModalFooter>
-                    <Button color="danger" onClick={handleDeleteButton}>Confirm Delete</Button>{" "}
-                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+                    <Button className="redButton" onClick={handleDeleteButton}>Confirm Delete</Button>{" "}
+                    <Button className="grayButton" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
         </div>

@@ -68,7 +68,7 @@ export const CreateCommentModal = ({ loggedInUser, itemId, toggle, getComments }
                     </FormGroup>
 
                     <Button
-                        color="success"
+                        className="greenButton"
                         onClick={() => {
                             handleCreate();
                         }}>

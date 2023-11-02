@@ -101,9 +101,9 @@ export const EditProfile = () => {
                         }}
                     />
                 </FormGroup>
-                <Button id="saveProfile" onClick={(e) => handleSave(e)}>Save Changes</Button>
+                <Button className="greenButton" onClick={(e) => handleSave(e)}>Save Changes</Button>
 
-                <Button id="cancelProfile" onClick={(e) => cancel(e)}>Cancel</Button>
+                <Button className="redButton" onClick={(e) => cancel(e)}>Cancel</Button>
             </Form>
         </>
     )

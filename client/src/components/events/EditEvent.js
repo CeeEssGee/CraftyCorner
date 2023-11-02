@@ -128,9 +128,20 @@ export const EditEvent = () => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label>Picture:</Label>
-                    <Input type="text" defaultValue={event.pictureUrl} className="event.picture"
-                        onChange={(e) => setPictureUrl(e.target.value)} />
+                    <Label htmlFor="event.pictureUrl">Picture:</Label>
+                    <Button className="yellowButton"
+                        onClick={(clickEvent) => {
+                            UploadWidget(clickEvent)
+                        }}>Upload Picture</Button>
+                    <div className="imagePreview">
+                        {
+                            event.pictureUrl !== ""
+                                ? <>
+                                    <div><img src={event.pictureUrl}></img></div>
+                                </>
+                                : <>(Image will preview here)</>
+                        }
+                    </div>
                 </FormGroup>
 
                 <FormGroup>
@@ -139,7 +150,7 @@ export const EditEvent = () => {
                         onChange={(e) => setTotalSeats(e.target.value)} />
                 </FormGroup>
 
-                <Button
+                <Button className="greenButton"
                     onClick={(e) => {
                         handleSubmitEventUpdates(e)
                     }}>Save Changes</Button>

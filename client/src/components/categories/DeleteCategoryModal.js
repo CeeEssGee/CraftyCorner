@@ -17,7 +17,7 @@ export const DeleteCategoryModal = ({ category, getAllCategories }) => {
 
     return (
         <div>
-            <Button className="deleteButton" onClick={toggle}>
+            <Button className="redButton" onClick={toggle}>
                 Delete
             </Button>
             <Modal isOpen={modal} toggle={toggle}>

@@ -38,7 +38,7 @@ export default function MyItems({ loggedInUser }) {
     }
 
     return (
-        <div>
+        <div className="otherContainer">
             <h2>Items</h2>
             <Button
                 className="createItem"

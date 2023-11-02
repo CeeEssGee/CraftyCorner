@@ -21,7 +21,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 </div>
             </CardBody>
             <CardFooter className="cardFooter">
-                <Button className="detailsButton"
+                <Button className="blueButton"
                     onClick={() => {
                         navigate(`/items/${item.id}`)
                     }}
@@ -30,7 +30,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
                 </Button>
 
                 {loggedInUser.id === item.userProfile.id && item.isActive === true ? (
-                    <Button className="deactivateButton"
+                    <Button className="yellowButton"
                         onClick={() => {
                             deactivateItem(item.id).then(() => {
                                 getAllItems()
@@ -43,7 +43,7 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
 
                 {loggedInUser.id === item.userProfile.id && item.isActive === false ? (
                     <Button
-                        className="reactivateButton"
+                        className="darkGreenButton"
                         onClick={() => {
                             reactivateItem(item.id).then(() => {
                                 getAllItems()

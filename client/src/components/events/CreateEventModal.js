@@ -244,7 +244,7 @@ export const CreateEventModal = ({ toggle, getAllEvents, loggedInUser }) => {
                     <FormGroup>
                         <Label htmlFor="eventPictureUrl">Picture (if any):
                         </Label>
-                        <Button
+                        <Button className="yellowButton"
                             onClick={(clickEvent) => {
                                 UploadWidget(clickEvent)
                             }}
@@ -262,7 +262,7 @@ export const CreateEventModal = ({ toggle, getAllEvents, loggedInUser }) => {
                     </FormGroup>
 
                     <Button
-                        color="success"
+                        className="greenButton"
                         onClick={() => {
                             handleCreate();
                         }}>Save</Button>
