@@ -41,7 +41,7 @@ export const CategoryList = ({ loggedInUser }) => {
                 <h4>Categories</h4>
                 {loggedInUser?.roles.includes("Admin") ? (
                     <Button
-                        className="createCategory"
+                        className="blueButton"
                         onClick={toggle}>
                         Create Category
                     </Button>
@@ -61,11 +61,11 @@ export const CategoryList = ({ loggedInUser }) => {
                         {categories.map((c) => (
                             <tr key={`category-${c.id}`}>
                                 {/* <th scope="row">{c.id}</th> */}
-                                <td>{c.name}</td>
+                                <td className="categoryName">{c.name}</td>
                                 <td>
                                     {loggedInUser?.roles.includes("Admin") ? (
                                         <Button
-                                            className="editButton"
+                                            className="yellowButton"
                                             onClick={() => {
                                                 getCategoryById(c.id).then(setSelectedCategory).then(editToggle);
                                             }}

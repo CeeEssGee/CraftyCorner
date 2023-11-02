@@ -160,6 +160,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                     <FormGroup>
                         <Label htmlFor="itemPictureId">Picture:</Label>
                         <Button
+                            className="yellowButton"
                             onClick={(clickEvent) => {
                                 UploadWidget(clickEvent)
                             }}
@@ -177,7 +178,7 @@ export const CreateItemModal = ({ toggle, getAllItems, loggedInUser }) => {
                     </FormGroup>
 
                     <Button
-                        color="success"
+                        className="greenButton"
                         onClick={() => {
                             handleCreate();
                         }}>

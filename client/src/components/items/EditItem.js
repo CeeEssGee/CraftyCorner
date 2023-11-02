@@ -116,7 +116,7 @@ export const EditItem = () => {
 
                     <FormGroup>
                         <Label htmlFor="pictureId">Picture:</Label>
-                        <Button
+                        <Button className="yellowButton"
                             onClick={(clickEvent) => {
                                 UploadWidget(clickEvent)
                             }}
@@ -135,7 +135,7 @@ export const EditItem = () => {
 
 
                 </FormGroup>
-                <Button
+                <Button className="greenButton"
                     onClick={(e) => {
                         handleSubmitItemUpdates(e)
                     }}

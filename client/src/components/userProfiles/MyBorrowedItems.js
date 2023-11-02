@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { getUserProfileById } from "../../managers/userProfileManager";
 import { getBorrowedItems, getItems } from "../../managers/itemManager";
 import ItemCard from "../items/ItemCard";
-import { filteredItemComments, getAllItemComments, getItemComments } from "../../managers/itemCommentManager";
-import { Spinner } from "reactstrap";
 import "./Profile.css"
 
 

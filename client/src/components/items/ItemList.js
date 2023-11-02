@@ -36,7 +36,7 @@ export default function ItemList({ searchTermState, loggedInUser }) {
             <>
                 <p>Create an item!</p>
                 <Button
-                    className="createItem"
+                    className="greenButton"
                     onClick={toggle}>
                     Create Item
                 </Button>
@@ -48,7 +48,7 @@ export default function ItemList({ searchTermState, loggedInUser }) {
         <div className="otherContainer">
             <h2 className="itemsTitle">Items</h2>
             <Button
-                className="createItem"
+                className="greenButton"
                 onClick={toggle}>
                 Create Item
             </Button>

@@ -50,7 +50,7 @@ export const AddRSVPModal = ({ loggedInUser, eventId, toggle, getAllRsvps, getEv
                                 ""
                         }
                     </FormGroup>
-                    <Button color="success"
+                    <Button className="greenButton"
                         onClick={() => { handleCreate() }}>Save</Button>
 
                 </Form>

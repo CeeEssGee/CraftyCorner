@@ -19,7 +19,7 @@ export default function RsvpCard({ rsvp, loggedInUser, getAllRsvps }) {
                 </div>
             </CardBody>
             <CardFooter className="cardFooter">
-                <Button className="detailsButton"
+                <Button className="blueButton"
                     onClick={() => {
                         navigate(`/community/${rsvp.event.id}`)
                     }}
