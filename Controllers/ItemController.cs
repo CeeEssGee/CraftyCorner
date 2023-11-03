@@ -19,7 +19,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetItems()
     {
         return Ok(_dbContext.Items
@@ -32,7 +32,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet("{userId}/userId")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetItemsByUserId(int userId)
     {
         return Ok(_dbContext.Items
@@ -45,7 +45,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetItemById(int id)
     {
         Item item = _dbContext
@@ -64,7 +64,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult CreateItem(Item item)
     {
         item.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == item.UserProfileId);
@@ -74,7 +74,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult DeleteItem(int id)
     {
         Item itemToDelete = _dbContext.Items.SingleOrDefault(i => i.Id == id);
@@ -89,7 +89,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPut("{id}/edit")]
-    // [Authorize]
+    [Authorize]
     public IActionResult UpdateItem(int id, Item item)
     {
         Item itemToUpdate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
@@ -114,7 +114,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPut("{id}/deactivate")]
-    // [Authorize]
+    [Authorize]
     public IActionResult DeactivateItem(int id)
     {
         Item itemToDeactivate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
@@ -134,7 +134,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPut("{id}/reactivate")]
-    // [Authorize]
+    [Authorize]
     public IActionResult ReactivateItem(int id)
     {
         Item itemToReactivate = _dbContext.Items.SingleOrDefault(i => i.Id == id);
@@ -154,7 +154,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpGet("borrowed/{userId}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult BorrowedItems(int userId)
     {
         List<Item> foundItems =

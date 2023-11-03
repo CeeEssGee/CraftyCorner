@@ -6,23 +6,3 @@
     display: flex;
     justify-content: center;
 }
-
-/* .titleDiv,
-.subtitleDiv,
-.pictureDiv,
-.p1Div,
-.p2Div,
-.p3Div,
-.footerDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-}
-
-.homeSection {
-    margin-top: 50px;
-    font-family: 'Exo 2', sans-serif;
-    font-family: 'Kanit', sans-serif;
-    font-family: 'Roboto', sans-serif;
-} */

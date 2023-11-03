@@ -18,7 +18,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetCategories()
     {
         return Ok(_dbContext.Categories
@@ -27,7 +27,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetCategoryById(int id)
     {
         Category category = _dbContext
@@ -43,7 +43,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult CreateCategory(Category category)
     {
         try
@@ -59,7 +59,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult UpdateCategory(Category category, int id)
     {
         Category categoryToUpdate = _dbContext.Categories.SingleOrDefault(c => c.Id == id);
@@ -79,7 +79,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult DeleteCategory(int id)
     {
         Category categoryToDelete = _dbContext.Categories.SingleOrDefault(c => c.Id == id);

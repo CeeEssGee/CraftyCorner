@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-// import ItemList from "./items/ItemList";
 import Items from "./items/Items";
 import { CategoryList } from "./categories/CategoryList";
 import ItemDetails from "./items/ItemDetails";
@@ -17,7 +16,6 @@ import EventDetails from "./events/EventDetails";
 import { EditEvent } from "./events/EditEvent";
 import { MyEvents } from "./userProfiles/MyEvents";
 import { MyRsvps } from "./userProfiles/MyRsvps";
-// import { CategoryCreate } from "./categories/CategoryCreate";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {

@@ -18,7 +18,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetEvents()
     {
         return Ok(_dbContext.Events
@@ -31,7 +31,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("{userId}/userId")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetEventsByUserId(int userId)
     {
         return Ok(_dbContext.Events
@@ -73,7 +73,7 @@ public class EventController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult CreateEvent(Event eventToPost)
     {
         eventToPost.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == eventToPost.UserProfileId);
@@ -83,7 +83,7 @@ public class EventController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult DeleteEvent(int id)
     {
         Event eventToDelete = _dbContext.Events.SingleOrDefault(e => e.Id == id);
@@ -98,7 +98,7 @@ public class EventController : ControllerBase
     }
 
     [HttpPut("{id}/edit")]
-    // [Authorize]
+    [Authorize]
     public IActionResult UpdateEvent(int id, Event updatedEvent)
     {
         Event eventToUpdate = _dbContext.Events.SingleOrDefault(e => e.Id == id);

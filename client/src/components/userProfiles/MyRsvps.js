@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react"
-import { getEventsByUserId } from "../../managers/eventManager";
-import EventCard from "../events/EventCard";
-import { CreateEventModal } from "../events/CreateEventModal";
-import { Button, Modal, ModalHeader } from "reactstrap";
 import { getRsvpsByUserId } from "../../managers/rsvpManager";
 import { useNavigate } from "react-router-dom";
 import RsvpCard from "../events/RsvpCard";

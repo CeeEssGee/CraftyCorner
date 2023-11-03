@@ -20,15 +20,4 @@ public class Event
     public string? PictureUrl { get; set; }
     public int TotalSeats { get; set; }
     public List<Rsvp>? Rsvps { get; set; }
-    // public int? SeatsAvailable
-    // {
-    //     get
-    //     {
-    //         int seats = 0;
-    //         // Totalseats - number of RSVPs = SeatsAvailable
-    //         seats = TotalSeats - Rsvps.Count();
-
-    //         return seats;
-    //     }
-    // }
 }

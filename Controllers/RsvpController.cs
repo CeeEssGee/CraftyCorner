@@ -18,7 +18,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetRsvps()
     {
         return Ok(_dbContext.Rsvps
@@ -30,7 +30,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpGet("{userId}/userId")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetRsvpsByUserId(int userId)
     {
         return Ok(_dbContext.Rsvps
@@ -43,7 +43,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetRsvpById(int id)
     {
         Rsvp rsvp = _dbContext.Rsvps
@@ -60,7 +60,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpGet("{eventId}/eventId")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetRsvpsByEventId(int eventId)
     {
         List<Rsvp> rsvps = _dbContext.Rsvps
@@ -74,7 +74,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult CreateRsvp(Rsvp rsvp)
     {
         rsvp.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == rsvp.UserProfileId);
@@ -84,7 +84,7 @@ public class RsvpController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult DeleteRsvp(int id)
     {
         Rsvp rsvp = _dbContext.Rsvps.SingleOrDefault(r => r.Id == id);

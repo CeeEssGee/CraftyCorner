@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react"
-import { createItemComment, getItemComments } from "../../managers/itemCommentManager";
-import { getItemById } from "../../managers/itemManager";
+import { useState } from "react"
+import { createItemComment } from "../../managers/itemCommentManager";
 import { Button, Form, FormFeedback, FormGroup, Input, Label, ModalBody } from "reactstrap";
-import { useNavigate } from "react-router-dom";
 
 
 export const CreateCommentModal = ({ loggedInUser, itemId, toggle, getComments }) => {

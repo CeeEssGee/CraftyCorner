@@ -62,56 +62,6 @@
     border-radius: 5px;
 }
 
-.greenButton {
-    background: #03FCBA;
-    color: black;
-    margin-bottom: 10px;
-    margin-left: 10px;
-}
-
-.greenButton:hover {
-    background: #03fcba9b;
-    color: black;
-}
-
-.blueButton {
-    background: #01FDF6;
-    color: black;
-}
-
-button:hover,
-.blueButton:hover {
-    background: #03FCBA;
-    color: black;
-}
-
-.deleteButton {
-    background: #FB5012;
-}
-
-button:hover,
-.deleteButton:hover {
-    background: darkred;
-}
-
-.darkGreenButton {
-    background: green;
-}
-
-.darkGreenButton:hover {
-    background: darkgreen;
-}
-
-.yellowButton {
-    background: #E9DF00;
-    color: black;
-}
-
-.yellowButton:hover {
-    background: #e9dd009f;
-    color: black;
-}
-
 /* Buttons */
 .blueButton {
     background: #01FDF6;
