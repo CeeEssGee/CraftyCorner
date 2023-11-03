@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button, Card, CardBody, CardFooter, CardSubtitle, CardTitle, Modal, ModalHeader, Spinner } from "reactstrap";
-import { deactivateItem, deleteItem, getItemById, getItems, reactivateItem } from "../../managers/itemManager";
+import { Button, Card, CardBody, CardFooter, CardTitle, Modal, ModalHeader, Spinner } from "reactstrap";
+import { deactivateItem, getItemById, getItems, reactivateItem } from "../../managers/itemManager";
 import { useNavigate, useParams } from "react-router-dom";
 import { getItemComments } from "../../managers/itemCommentManager";
 import { CreateCommentModal } from "./CreateCommentModal";

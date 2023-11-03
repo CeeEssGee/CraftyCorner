@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getEvents } from "../../managers/eventManager";
-import { Button, Modal, ModalHeader, Spinner } from "reactstrap";
+import { Button, Modal, ModalHeader } from "reactstrap";
 import EventCard from "./EventCard";
 import { CreateEventModal } from "./CreateEventModal";
 import "./Event.css"

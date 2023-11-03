@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserProfileById } from "../../managers/userProfileManager";
 import { getItems } from "../../managers/itemManager";
-import { getItemComments } from "../../managers/itemCommentManager";
 import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css"

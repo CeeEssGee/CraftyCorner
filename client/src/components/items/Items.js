@@ -4,7 +4,6 @@ import { ItemSearch } from "./ItemSearch";
 
 
 export default function Items({ loggedInUser }) {
-    // const [detailsItemId, setDetailsItemId] = useState(null);
     const [searchTerms, setSearchTerms] = useState("");
 
     return <>

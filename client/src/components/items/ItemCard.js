@@ -1,5 +1,5 @@
-import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { deactivateItem, deleteItem, reactivateItem } from "../../managers/itemManager";
+import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText } from "reactstrap";
+import { deactivateItem, reactivateItem } from "../../managers/itemManager";
 import { useNavigate } from "react-router-dom";
 import "./Item.css"
 import ConfirmDeleteItemModal from "./ConfirmDeleteItemModal";
@@ -12,7 +12,6 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
     return (
         <Card className="itemCard" color="dark" outline style={{ marginBottom: "4px" }}>
             <CardBody>
-                {/* <CardTitle tag="h5">{item.Name}</CardTitle> */}
                 <CardSubtitle className="mb-2 text-muted" tag="h4">
                     {item.manufacturer} {item.name}
                 </CardSubtitle>
@@ -56,14 +55,6 @@ export default function ItemCard({ item, loggedInUser, getAllItems }) {
 
                 {loggedInUser.id === item.userProfile.id || loggedInUser.roles.includes("Admin") ? (
                     <ConfirmDeleteItemModal item={item} getAllItems={getAllItems} />
-                    // <Button
-                    //     className="deleteButton"
-                    //     onClick={() => {
-                    //         deleteItem(item.id).then(() => {
-                    //             getAllItems()
-                    //         })
-                    //     }}
-                    // >Delete</Button>
                 ) : (
                     ""
                 )}

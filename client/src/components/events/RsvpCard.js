@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, CardFooter, CardSubtitle, CardText } from "reactstrap";
-import ConfirmDeleteEventModal from "./ConfirmDeleteEventModal";
 
 
 export default function RsvpCard({ rsvp, loggedInUser, getAllRsvps }) {

@@ -50,49 +50,6 @@
     margin: 50px;
 }
 
-
-
-
-.editProfile,
-#saveProfile,
-.myRSVPs,
-.createMyItem {
-    background: #01FDF6;
-    color: black;
-}
-
-button:hover,
-.myRSVPs:hover,
-.editProfile:hover,
-#saveProfile:hover,
-.createMyItem:hover {
-    background: #03FCBA;
-    color: black;
-}
-
-.myBorrowed,
-.myEvents,
-#cancelProfile {
-    background: #FB5012;
-}
-
-button:hover,
-.myEvents:hover,
-#cancelProfile:hover,
-.myBorrowed:hover {
-    background: darkred;
-}
-
-.myItems {
-    background: #E9DF00;
-    color: black;
-}
-
-.myItems:hover {
-    background: #e9dd009f;
-    color: black;
-}
-
 /* Buttons */
 .blueButton {
     background: #01FDF6;

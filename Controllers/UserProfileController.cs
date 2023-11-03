@@ -26,7 +26,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -50,7 +50,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("deactivated")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetDeactivated()
     {
         return Ok(_dbContext.UserProfiles
@@ -130,7 +130,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles/{id}")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetWithByIDRoles(int id)
     {
         return Ok(_dbContext.UserProfiles
@@ -156,7 +156,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult EditUserProfile(int id, UserProfile userProfile)
     {
         UserProfile matching = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);

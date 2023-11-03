@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { cloud_name, preset_key } from "../../_env";
 import { createEvent } from "../../managers/eventManager";
-import { Button, Form, FormFeedback, FormGroup, Input, Label, Modal, ModalBody } from "reactstrap";
+import { Button, Form, FormFeedback, FormGroup, Input, Label, ModalBody } from "reactstrap";
 import "./Event.css"
 
 

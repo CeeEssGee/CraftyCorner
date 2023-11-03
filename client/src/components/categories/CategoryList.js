@@ -60,7 +60,6 @@ export const CategoryList = ({ loggedInUser }) => {
                     <tbody>
                         {categories.map((c) => (
                             <tr key={`category-${c.id}`}>
-                                {/* <th scope="row">{c.id}</th> */}
                                 <td className="categoryName">{c.name}</td>
                                 <td>
                                     {loggedInUser?.roles.includes("Admin") ? (

@@ -19,7 +19,7 @@ public class ItemCommentController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetItemCommentsByUserId()
     {
         List<ItemComment> foundItemComments =
@@ -32,7 +32,7 @@ public class ItemCommentController : ControllerBase
     }
 
     [HttpGet("{itemId}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetItemComments(int itemId)
     {
         List<ItemComment> foundItemComments =
@@ -48,7 +48,7 @@ public class ItemCommentController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult CreateComment(ItemComment itemComment)
     {
         itemComment.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == itemComment.UserProfileId);
